@@ -54,6 +54,9 @@ module.exports = [
             name: "KJs"
         },
         {
+            name: "KTs"
+        },
+        {
             name: "K9s"
         },
         {

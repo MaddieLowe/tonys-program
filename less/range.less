@@ -11,5 +11,25 @@
         height: 30px;
         background-color: aqua;
         display: inline-block;
+
+        &:hover {
+            outline: 2px solid blue;
+        }
+
+        &:active {
+            outline: 2px solid green;
+        }
+
+        &.selected {
+            outline: 2px solid lightgreen;
+
+            &:hover {
+                outline: 2px solid blue;
+            }
+
+            &:active {
+                outline: 2px solid green;
+            }
+        }
     }
 }
