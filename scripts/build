@@ -1,30 +1,8 @@
-#!/usr/bin/env node
+#!/bin/bash -e
 
-var ejs = require('ejs');
-var fs = require('fs');
+js_input_file='./app/app.js';
+js_output_file='./index.js';
 
-var output_path = __dirname + '/../index.html';
+node_modules/browserify/bin/cmd.js ${js_input_file} -o ${js_output_file}
 
-function ejs_to_html(path, options) {
-    fs.readFile(path, 'utf8', function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-
-        var template = ejs.compile(data, options);
-        var html = template();
-
-        fs.writeFile(output_path, html, function(err) {
-            if (err) {
-                console.error(err);
-                process.exit(1);
-            }
-            process.exit(0);
-        });
-    });
-}
-
-ejs_to_html(__dirname + '/../views/index.ejs', {
-    filename: 'index.html'
-});
+scripts/build-view

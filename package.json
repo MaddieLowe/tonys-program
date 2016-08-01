@@ -5,6 +5,8 @@
     "dependencies":
     {
         "browserify": "*",
-        "ejs": "*"
+        "ejs": "*",
+        "less": "*",
+        "async": "*"
     }
 }
