@@ -4,9 +4,9 @@
     "description": "It's a secret",
     "dependencies":
     {
+        "async": "*",
         "browserify": "*",
         "ejs": "*",
-        "less": "*",
-        "async": "*"
+        "less": "*"
     }
 }

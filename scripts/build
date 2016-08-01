@@ -3,6 +3,7 @@
 js_input_file='./app/app.js';
 js_output_file='./index.js';
 
+echo 'Browserifying'
 node_modules/browserify/bin/cmd.js ${js_input_file} -o ${js_output_file}
 
 scripts/build-view
