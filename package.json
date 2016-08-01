@@ -1,0 +1,10 @@
+{
+    "name": "tonys-program",
+    "version": "0.0.0",
+    "description": "It's a secret",
+    "dependencies":
+    {
+        "browserify": "*",
+        "ejs": "*"
+    }
+}
