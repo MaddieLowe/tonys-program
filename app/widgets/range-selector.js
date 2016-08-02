@@ -22,6 +22,9 @@ module.exports = function(element, model) {
         var row = $("<div class='row'></div>");
         for (var j = 0; j < row_range.length; j++) {
             var column = $("<div class='column'>" + row_range[j].name + "</div>");
+            if (row_range[j].disabled) {
+                column.addClass('disabled');
+            }
 
             // TODO: teardown
             column.on('click', click_handler(column, row_range[j]));

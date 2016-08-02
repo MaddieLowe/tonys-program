@@ -1,5 +1,7 @@
-.range {
+range {
     background-color: pink;
+    display: block;
+    margin: 15px;
 
     .row {
         padding: 5px;
@@ -30,6 +32,11 @@
             &:active {
                 outline: 2px solid darkgreen;
             }
+        }
+
+        &.disabled {
+            background-color: grey;
+            pointer-events: none;
         }
     }
 }
