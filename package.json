@@ -9,5 +9,10 @@
         "browserify": "*",
         "ejs": "*",
         "less": "*"
+    },
+    "devDependencies":
+    {
+        "mocha": "*",
+        "should": "*"
     }
 }
