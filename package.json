@@ -5,6 +5,7 @@
     "dependencies":
     {
         "async": "*",
+        "brfs": "*",
         "browserify": "*",
         "ejs": "*",
         "less": "*"

@@ -1,5 +1,4 @@
 range {
-    background-color: pink;
     display: block;
     margin: 15px;
 
@@ -13,6 +12,7 @@ range {
         height: 30px;
         background-color: aqua;
         display: inline-block;
+        cursor: pointer;
 
         &:hover {
             outline: 2px solid blue;
@@ -37,6 +37,20 @@ range {
         &.disabled {
             background-color: grey;
             pointer-events: none;
+        }
+    }
+}
+
+poker-range {
+    h2 {
+        cursor: pointer;
+    }
+
+    .section {
+        visibility: hidden;
+
+        &.showing {
+            visibility: visible;
         }
     }
 }
