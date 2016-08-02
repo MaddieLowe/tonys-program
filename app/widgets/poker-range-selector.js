@@ -10,6 +10,7 @@ module.exports = function(element, model) {
     var template = fs.readFileSync(__dirname + '/../../views/widgets/poker-range-selector.ejs', 'utf8');
     element.append($(template));
 
+    // Initialize the base range selector
     var base_element = element.find('range.base');
     var base_model = JSON.parse(JSON.stringify(base_range));
     var rs_emitter = range_selector(base_element, base_model);
@@ -25,6 +26,7 @@ module.exports = function(element, model) {
         console.error(message);
     });
 
+    // Initialize the offsuit range selector
     var offsuit_base_element = element.find('range.offsuit-base');
     var offsuit_base_model = JSON.parse(JSON.stringify(base_range));
     var obr_emitter = range_selector(offsuit_base_element, offsuit_base_model);
