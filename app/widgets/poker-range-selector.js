@@ -3,6 +3,7 @@ var range_selector = require('./range-selector');
 var base_range = require('../lib/base-range');
 var offsuit_range = require('../lib/offsuit-range');
 var fs = require('fs');
+var poker_range_utils = require('../lib/poker-range-utils');
 
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
@@ -15,13 +16,10 @@ module.exports = function(element, model) {
     var base_model = JSON.parse(JSON.stringify(base_range));
     var rs_emitter = range_selector(base_element, base_model);
     rs_emitter.on('changed', function() {
-        var message = "Selected cards: ";
-        for (var i = 0; i < base_model.length; i++) {
-            for (var j = 0; j < base_model[i].length; j++) {
-                if (base_model[i][j].selected) {
-                    message += " " + base_model[i][j].name;
-                }
-            }
+        var message = "Selected cards:";
+        var pairs = poker_range_utils.convert_model(base_model);
+        for (var i = 0; i < pairs.length; i++) {
+            message += " " + pairs[i].name;
         }
         console.error(message);
     });

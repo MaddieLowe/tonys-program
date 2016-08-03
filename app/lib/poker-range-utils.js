@@ -41,14 +41,19 @@ module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_
 
     for (var i = 0; i < base_model.length; i++) {
         for (var j = 0; j < base_model[i].length; j++) {
+            if (!base_model[i][j].selected) continue;
+
             var name = base_model[i][j].name;
+            var card1 = name[0];
+            var card2 = name[1];
             if (name.length === 2) { // This is a pair then
-
+                card_pairs = card_pairs.concat(find_all_pairs(card1, card2));
             } else if (name[2] === 's') { // This is suited
-
+                card_pairs = card_pairs.concat(find_all_suited(card1, card2));
             } else if (name[2] === 'o') { // This is offsuit
-
+                card_pairs = card_pairs.concat(find_all_offsuit(card1, card2));
             }
         }
     }
+    return card_pairs;
 };
