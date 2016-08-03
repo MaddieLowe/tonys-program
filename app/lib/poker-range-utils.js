@@ -24,6 +24,18 @@ var find_all_suited = module.exports.find_all_suited = function(val1, val2) {
     return pairs;
 };
 
+var find_all_offsuit = module.exports.find_all_offsuit = function(val1, val2) {
+    var pairs = [];
+    for (var i = 0; i < suits.length; i++) {
+        for (var j = 0; j < suits.length; j++) {
+            if (suits[j] !== suits[i]) {
+                pairs.push(new card_pair("" + val1 + suits[i], "" + val2 + suits[j]));
+            }
+        }
+    }
+    return pairs;
+};
+
 module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_suit_model) {
     var card_pairs = [];
 
