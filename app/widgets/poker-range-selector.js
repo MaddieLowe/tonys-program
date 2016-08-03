@@ -15,14 +15,6 @@ module.exports = function(element, model) {
     var base_element = element.find('range.base');
     var base_model = JSON.parse(JSON.stringify(base_range));
     var rs_emitter = range_selector(base_element, base_model);
-    rs_emitter.on('changed', function() {
-        var message = "Selected cards:";
-        var pairs = poker_range_utils.convert_model(base_model);
-        for (var i = 0; i < pairs.length; i++) {
-            message += " " + pairs[i].name;
-        }
-        console.error(message);
-    });
 
     // Initialize the offsuit range selector
     var offsuit_base_element = element.find('range.offsuit-base');
@@ -53,6 +45,15 @@ module.exports = function(element, model) {
         } else {
             offsuit_section.addClass('showing');
         }
+    });
+
+    rs_emitter.on('changed', function() {
+        var message = "Selected cards:";
+        var pairs = poker_range_utils.convert_model(base_model, offsuit_base_model, offsuit_model);
+        for (var i = 0; i < pairs.length; i++) {
+            message += " " + pairs[i].name;
+        }
+        console.error(message);
     });
 
     return emitter;

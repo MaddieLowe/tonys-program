@@ -3,9 +3,9 @@ var card_pair = require('./card-pair');
 // This function makes the assumption that the base_model and the offsuit_base_model are the same size with the same
 // cards at the same indexes
 var default_suit_pairs = ['dd','cd','hd','sd',
-                  'dc','cc','hc','sc',
-                  'dh','ch','hh','sh',
-                  'ds','cs','hs','ss'];
+                          'dc','cc','hc','sc',
+                          'dh','ch','hh','sh',
+                          'ds','cs','hs','ss'];
 
 var find_all_pairs = module.exports.find_all_pairs = function(val1, val2, suit_pairs) {
     suit_pairs = suit_pairs || default_suit_pairs;
@@ -40,8 +40,22 @@ var find_all_offsuit = module.exports.find_all_offsuit = function(val1, val2, su
     return pairs;
 };
 
+var convert_suit_model = function(suit_model) {
+    var suit_pairs = [];
+    for (var i = 0; i < suit_model.length; i++) {
+        for (var j = 0; j < suit_model[i].length; j++) {
+            if (suit_model[i][j].selected) {
+                suit_pairs.push(suit_model[i][j].name.toLowerCase());
+            }
+        }
+    }
+    return suit_pairs;
+};
+
 module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_suit_model) {
     var card_pairs = [];
+
+    var offsuit_pairs = convert_suit_model(offsuit_suit_model);
 
     for (var i = 0; i < base_model.length; i++) {
         for (var j = 0; j < base_model[i].length; j++) {
@@ -55,7 +69,11 @@ module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_
             } else if (name[2] === 's') { // This is suited
                 card_pairs = card_pairs.concat(find_all_suited(card1, card2));
             } else if (name[2] === 'o') { // This is offsuit
-                card_pairs = card_pairs.concat(find_all_offsuit(card1, card2));
+                if (offsuit_base_model[i][j].selected) {
+                    card_pairs = card_pairs.concat(find_all_offsuit(card1, card2, offsuit_pairs));
+                } else {
+                    card_pairs = card_pairs.concat(find_all_offsuit(card1, card2));
+                }
             }
         }
     }
