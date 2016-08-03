@@ -16,6 +16,14 @@ var find_all_pairs = module.exports.find_all_pairs = function(val1, val2) {
     return pairs;
 };
 
+var find_all_suited = module.exports.find_all_suited = function(val1, val2) {
+    var pairs = [];
+    for (var i = 0; i < suits.length; i++) {
+        pairs.push(new card_pair("" + val1 + suits[i], "" + val2 + suits[i]));
+    }
+    return pairs;
+};
+
 module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_suit_model) {
     var card_pairs = [];
 

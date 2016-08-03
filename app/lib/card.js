@@ -4,7 +4,7 @@ function card(name) {
 
     switch(name[0].toLowerCase()) {
         case 'a':
-        this.value = 1;
+        this.value = 14;
         break;
         case 't':
         this.value = 10;
