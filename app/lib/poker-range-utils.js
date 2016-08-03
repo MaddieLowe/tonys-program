@@ -2,35 +2,39 @@ var card_pair = require('./card-pair');
 
 // This function makes the assumption that the base_model and the offsuit_base_model are the same size with the same
 // cards at the same indexes
-var suits = ['h','c','d','s'];
+var default_suit_pairs = ['dd','cd','hd','sd',
+                  'dc','cc','hc','sc',
+                  'dh','ch','hh','sh',
+                  'ds','cs','hs','ss'];
 
-var find_all_pairs = module.exports.find_all_pairs = function(val1, val2) {
+var find_all_pairs = module.exports.find_all_pairs = function(val1, val2, suit_pairs) {
+    suit_pairs = suit_pairs || default_suit_pairs;
     var pairs = [];
-    for (var i = 0; i < suits.length; i++) {
-        for (var j = 0; j < suits.length; j++) {
-            if (suits[j] > suits[i]) {
-                pairs.push(new card_pair("" + val1 + suits[i], "" + val2 + suits[j]));
-            }
+    for (var i = 0; i < suit_pairs.length; i++) {
+        if (suit_pairs[i][0] > suit_pairs[i][1]) {
+            pairs.push(new card_pair("" + val1 + suit_pairs[i][0], "" + val2 + suit_pairs[i][1]));
         }
     }
     return pairs;
 };
 
-var find_all_suited = module.exports.find_all_suited = function(val1, val2) {
+var find_all_suited = module.exports.find_all_suited = function(val1, val2, suit_pairs) {
+    suit_pairs = suit_pairs || default_suit_pairs;
     var pairs = [];
-    for (var i = 0; i < suits.length; i++) {
-        pairs.push(new card_pair("" + val1 + suits[i], "" + val2 + suits[i]));
+    for (var i = 0; i < suit_pairs.length; i++) {
+        if (suit_pairs[i][0] === suit_pairs[i][1]) {
+            pairs.push(new card_pair("" + val1 + suit_pairs[i][0], "" + val2 + suit_pairs[i][1]));
+        }
     }
     return pairs;
 };
 
-var find_all_offsuit = module.exports.find_all_offsuit = function(val1, val2) {
+var find_all_offsuit = module.exports.find_all_offsuit = function(val1, val2, suit_pairs) {
+    suit_pairs = suit_pairs || default_suit_pairs;
     var pairs = [];
-    for (var i = 0; i < suits.length; i++) {
-        for (var j = 0; j < suits.length; j++) {
-            if (suits[j] !== suits[i]) {
-                pairs.push(new card_pair("" + val1 + suits[i], "" + val2 + suits[j]));
-            }
+    for (var i = 0; i < suit_pairs.length; i++) {
+        if (suit_pairs[i][0] !== suit_pairs[i][1]) {
+            pairs.push(new card_pair("" + val1 + suit_pairs[i][0], "" + val2 + suit_pairs[i][1]));
         }
     }
     return pairs;
