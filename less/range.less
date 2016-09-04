@@ -1,49 +1,93 @@
+@row-padding: 5px;
+
 range {
-    display: block;
-    margin: 15px;
+    display: inline-block;
+    padding: @row-padding*2;
+    background: @dark-highlight;
+    border-radius: @border-radius*2;
 
     .row {
-        padding: 5px;
+	&:first-child {
+	    padding-top: 0;
+	}
     }
 
+    .row {
+	padding-top: @row-padding*2;
+    }
+
+    @column-height: @padding*2;
     .column {
-        margin: 0 5px;
-        width: 30px;
-        height: 30px;
-        background-color: aqua;
+	&:first-child {
+	    margin: 0;
+        }
+        margin-left: @row-padding*2;
+        width: @column-height;
+        height: @column-height;
+        background-color: @light-highlight;
         display: inline-block;
         cursor: pointer;
+	border-radius: @border-radius;
+	text-align: center;
+	font-size: @font-size-small;
+	line-height: @column-height;
+	color: @font-color-default;
 
         &:hover {
-            outline: 2px solid blue;
+	    background-color: @hover-highlight;
         }
 
         &:active {
-            outline: 2px solid darkgreen;
+
         }
 
         &.selected {
-            outline: 2px solid green;
+            background-color: @selected-outline;
 
             &:hover {
-                outline: 2px solid blue;
+		background-color: @hover-highlight;
             }
 
             &:active {
-                outline: 2px solid darkgreen;
+
             }
         }
 
         &.disabled {
-            background-color: grey;
             pointer-events: none;
+	    color: @font-color-disabled;
         }
     }
 }
 
 poker-range {
-    h2 {
-        cursor: pointer;
+    margin: @padding;
+    display: block;
+    position: relative;
+
+    .item-selector-section {
+	padding-top: @row-padding;
+	padding-right: @row-padding;
+	padding-bottom: @row-padding;
+	.item-selector {
+	    width: @padding*4;
+	    margin-right: @row-padding;
+	    display: inline-block;
+	    background-color: @dark-highlight;
+	    border-radius: @border-radius;
+	    text-align: center;
+	    cursor: pointer;
+
+	    &:hover {
+		background-color: @hover-highlight;
+	    }
+	    &.selected {
+		background-color: @light-highlight;
+		&:hover {
+		    background-color: @hover-highlight;
+		}
+	    }
+	}
     }
 
     .section {
@@ -52,5 +96,31 @@ poker-range {
         &.showing {
             visibility: visible;
         }
+    }
+
+    .sub-selection {
+	position: absolute;
+	top: 0;
+	left: 0;
+	pointer-events: none;
+
+	.suit-selection {
+	    margin-top: @padding*2;
+	}
+
+	range {
+	    pointer-events: all;
+	}
+
+	.base {
+	    background-color: fade(@suit-selector-outline, 20%);
+
+	    .column {
+		background-color: fade(rgba(0,0,0,0), 0%);
+		&.selected {
+		    outline: 3px solid @suit-selector-outline;
+		}
+	    }
+	}
     }
 }

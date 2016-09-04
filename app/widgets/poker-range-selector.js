@@ -12,16 +12,16 @@ module.exports = function(element, model) {
     element.append($(template));
 
     // Initialize the base range selector
-    var base_element = element.find('range.base');
+    var base_element = element.find('range.base.main');
     var base_model = JSON.parse(JSON.stringify(base_range));
     var rs_emitter = range_selector(base_element, base_model);
 
     // Initialize the offsuit range selector
-    var offsuit_base_element = element.find('range.offsuit-base');
+    var offsuit_base_element = element.find('.offsuit range.base');
     var offsuit_base_model = JSON.parse(JSON.stringify(base_range));
     var obr_emitter = range_selector(offsuit_base_element, offsuit_base_model);
 
-    var offsuit_element = element.find('range.offsuit');
+    var offsuit_element = element.find('.offsuit range.suit-selection');
     var offsuit_model = JSON.parse(JSON.stringify(offsuit_range));
     var or_emitter = range_selector(offsuit_element, offsuit_model);
     or_emitter.on('changed', function() {
@@ -36,14 +36,16 @@ module.exports = function(element, model) {
         console.error(message);
     });
 
-    var offsuit_title = element.find(':contains("Offsuit")');
+    var offsuit_title = element.find('.item-selector:contains("Offsuit")');
     var offsuit_section = element.find('.section.offsuit');
     // TODO: teardown
     offsuit_title.on('click', function() {
         if (offsuit_section.hasClass('showing')) {
             offsuit_section.removeClass('showing');
+	    offsuit_title.removeClass('selected');
         } else {
             offsuit_section.addClass('showing');
+	    offsuit_title.addClass('selected');
         }
     });
 
