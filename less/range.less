@@ -77,11 +77,12 @@ poker-range {
 	    border-radius: @border-radius;
 	    text-align: center;
 	    cursor: pointer;
+	    text-transform: capitalize;
 
 	    &:hover {
 		background-color: @hover-highlight;
 	    }
-	    &.selected {
+	    &.showing {
 		background-color: @light-highlight;
 		&:hover {
 		    background-color: @hover-highlight;
