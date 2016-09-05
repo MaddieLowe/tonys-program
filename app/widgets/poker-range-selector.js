@@ -9,11 +9,13 @@ var poker_range_utils = require('../lib/poker-range-utils');
 var suit_selector_ranges = {
     offsuit: offsuit_range,
     suited: suited_range,
-    pairs: paired_range
+    paired: paired_range
 };
 
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
+    var suit_models = {};
+    var base_models = {};
 
     var template = fs.readFileSync(__dirname + '/../../views/widgets/poker-range-selector.ejs', 'utf8');
     element.append($(template));
@@ -24,7 +26,7 @@ module.exports = function(element, model) {
     var base_range_selector_emitter = range_selector(base_element, base_model);
 
     // Initialize the suit range selectors
-    ['offsuit','suited','pairs'].forEach(function(suit_selector_type) {
+    ['offsuit','suited','paired'].forEach(function(suit_selector_type) {
 	var suit_selector_base_element = element.find('.' + suit_selector_type + ' range.base');
 	var suit_selector_base_model = JSON.parse(JSON.stringify(base_range));
 	var suit_seletor_base_emitter = range_selector(suit_selector_base_element, suit_selector_base_model);
@@ -57,11 +59,20 @@ module.exports = function(element, model) {
 		suit_selector_title.addClass('showing');
             }
 	});
+
+	base_models[suit_selector_type] = suit_selector_base_model;
+	suit_models[suit_selector_type] = suit_selector_model;
     });
 
     base_range_selector_emitter.on('changed', function() {
         var message = "Selected cards:";
-        var pairs = poker_range_utils.convert_model(base_model, offsuit_base_model, offsuit_model);
+        var pairs = poker_range_utils.convert_model(base_model,
+						    base_models.offsuit,
+						    suit_models.offsuit,
+						    base_models.suited,
+						    suit_models.suited,
+						    base_models.paired,
+						    suit_models.paired);
         for (var i = 0; i < pairs.length; i++) {
             message += " " + pairs[i].name;
         }

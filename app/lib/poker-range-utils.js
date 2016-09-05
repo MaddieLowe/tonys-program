@@ -52,10 +52,18 @@ var convert_suit_model = function(suit_model) {
     return suit_pairs;
 };
 
-module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_suit_model) {
+module.exports.convert_model = function(base_model,
+					offsuit_base_model,
+					offsuit_suit_model,
+					suited_base_model,
+					suited_suit_model,
+					paired_base_model,
+					paired_suit_model) {
     var card_pairs = [];
 
     var offsuit_pairs = convert_suit_model(offsuit_suit_model);
+    var suited_pairs = convert_suit_model(suited_suit_model);
+    var paired_pairs = convert_suit_model(paired_suit_model);
 
     for (var i = 0; i < base_model.length; i++) {
         for (var j = 0; j < base_model[i].length; j++) {
@@ -65,9 +73,17 @@ module.exports.convert_model = function(base_model, offsuit_base_model, offsuit_
             var card1 = name[0];
             var card2 = name[1];
             if (name.length === 2) { // This is a pair then
-                card_pairs = card_pairs.concat(find_all_pairs(card1, card2));
+		if (paired_base_model[i][j].selected) {
+		    card_pairs = card_pairs.concat(find_all_pairs(card1, card2, paired_pairs));
+		} else {
+                    card_pairs = card_pairs.concat(find_all_pairs(card1, card2));
+		}
             } else if (name[2] === 's') { // This is suited
-                card_pairs = card_pairs.concat(find_all_suited(card1, card2));
+		if (suited_base_model[i][j].selected) {
+		    card_pairs = card_pairs.concat(find_all_suited(card1, card2, suited_pairs));
+		} else {
+                    card_pairs = card_pairs.concat(find_all_suited(card1, card2));
+		}
             } else if (name[2] === 'o') { // This is offsuit
                 if (offsuit_base_model[i][j].selected) {
                     card_pairs = card_pairs.concat(find_all_offsuit(card1, card2, offsuit_pairs));
