@@ -1,4 +1,4 @@
-// Expecting the formate Ah, 2c, etc
+// Expecting the format Ah, 2c, etc
 function card(name) {
     this.name = name;
 

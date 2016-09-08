@@ -1,0 +1,46 @@
+card-selector {
+    .add-card {
+	cursor: pointer;
+	margin: 5px;
+	&:hover {
+	    color: white;
+	}
+    }
+
+    .values > * {
+	display: inline;
+	cursor: pointer;
+	margin: 5px;
+
+	&:hover {
+	    color: white;
+	}
+	&.selected {
+	    color: blue;
+	}
+    }
+
+    .values {
+	visibility: hidden;
+    }
+    .values.selected {
+	visibility: visible;
+    }
+
+    .suits > * {
+	display: inline;
+	cursor: pointer;
+	margin: 5px;
+
+	&:hover {
+	    color: white;
+	}
+    }
+
+    .suits {
+	visibility: hidden;
+    }
+    .suits.selected {
+	visibility: visible;
+    }
+}
