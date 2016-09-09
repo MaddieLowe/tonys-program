@@ -1,5 +1,6 @@
 var EventEmitter = require('events');
 var fs = require('fs');
+var card = require('../lib/card');
 
 var card_from_value = function(val) {
     var str;
@@ -28,6 +29,7 @@ var card_from_value = function(val) {
 
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
+    model = model || [];
 
     var template = fs.readFileSync(__dirname + '/../../views/widgets/card-selector.ejs', 'utf8');
     element.append($(template));
@@ -46,6 +48,14 @@ module.exports = function(element, model) {
 	};
     };
 
+    var update_displayed_cards = function() {
+        var card_display = element.find('.selected-cards');
+        card_display.empty();
+        model.forEach(function(card) {
+            card_display.append("<div>" + card.name + "</div>");
+        });
+    };
+
     for (var i = 2; i <= 14; i++) {
 	var val = card_from_value(i);
 	var value_el = $("<div>" + val + "</div>");
@@ -60,7 +70,10 @@ module.exports = function(element, model) {
 	suit_el.on('click', function(event) {
 	    element.find('*').removeClass('selected');
 	    selected_suit = suit;
-	    console.error("selected card: " + selected_value + selected_suit);
+            var selected_card = new card(card_from_value(selected_value) + selected_suit);
+            model.push(selected_card);
+            update_displayed_cards();
+            emitter.emit('changed');
 	});
     });
 
