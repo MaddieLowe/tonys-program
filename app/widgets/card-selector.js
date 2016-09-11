@@ -48,11 +48,23 @@ module.exports = function(element, model) {
 	};
     };
 
-    var update_displayed_cards = function() {
+    function update_displayed_cards() {
+        var delete_card_handler = function(card) {
+            return function(event) {
+                model.splice(model.indexOf(card), 1);
+                update_displayed_cards();
+            };
+        };
+
         var card_display = element.find('.selected-cards');
         card_display.empty();
         model.forEach(function(card) {
-            card_display.append("<div>" + card.name + "</div>");
+            var delete_button = $("<span class='delete-card'>x</span>");
+            var new_card = $("<div>" + card.name + "</div>");
+            new_card.append(delete_button);
+            card_display.append(new_card);
+            // TODO: teardown
+            delete_button.on('click', delete_card_handler(card));
         });
     };
 
@@ -60,6 +72,7 @@ module.exports = function(element, model) {
 	var val = card_from_value(i);
 	var value_el = $("<div>" + val + "</div>");
 	values_el.append(value_el);
+        // TODO: teardown
 	value_el.on('click', value_click_handler(value_el, val));
     }
 

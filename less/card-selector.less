@@ -61,5 +61,27 @@ card-selector {
     .selected-cards > * {
         display: inline;
         margin: 5px;
+        cursor: pointer;
+
+        .delete-card {
+            display: none;
+            width: 8px;
+            height: 16px;
+            vertical-align: top;
+            font-size: 11px;
+            color: red;
+
+            &:hover {
+                border: 1px solid red;
+                border-radius: 4px;
+            }
+        }
+
+        &:hover {
+            color: @hover-highlight;
+            .delete-card {
+                display: inline-block;
+            }
+        }
     }
 }
