@@ -10,9 +10,19 @@ var default_suit_pairs = ['dd','cd','hd','sd',
 var find_all_pairs = module.exports.find_all_pairs = function(val1, val2, suit_pairs) {
     suit_pairs = suit_pairs || default_suit_pairs;
     var pairs = [];
+
+    var cards_equal = function(card) {
+        return function(element) {
+            return element.name === card.name;
+        };
+    };
+
     for (var i = 0; i < suit_pairs.length; i++) {
-        if (suit_pairs[i][0] > suit_pairs[i][1]) {
-            pairs.push(new card_pair("" + val1 + suit_pairs[i][0], "" + val2 + suit_pairs[i][1]));
+        if (suit_pairs[i][0] !== suit_pairs[i][1]) {
+            var card = new card_pair("" + val1 + suit_pairs[i][0], "" + val2 + suit_pairs[i][1]);
+            if (!pairs.find(cards_equal(card))) {
+                pairs.push(card);
+            }
         }
     }
     return pairs;

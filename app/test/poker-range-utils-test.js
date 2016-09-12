@@ -5,9 +5,9 @@ describe('poker-range-utils', function() {
         it ('should find 6 pairs, and each card in a pair must have a different suit', function() {
             var pairs = poker_range_utils.find_all_pairs('A', 'A');
             pairs.length.should.eql(6);
-            pairs[0].name.should.eql('AhAd');
-            pairs[1].name.should.eql('AsAd');
-            pairs[2].name.should.eql('AdAc');
+            pairs[0].name.should.eql('AdAc');
+            pairs[1].name.should.eql('AhAd');
+            pairs[2].name.should.eql('AsAd');
             pairs[3].name.should.eql('AhAc');
             pairs[4].name.should.eql('AsAc');
             pairs[5].name.should.eql('AsAh');
