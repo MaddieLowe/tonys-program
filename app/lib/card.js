@@ -1,6 +1,6 @@
 // Expecting the format Ah, 2c, etc
 function card(name) {
-    this.name = name;
+    this.name = name.toUpperCase();
 
     switch(name[0].toLowerCase()) {
         case 'a':
@@ -22,7 +22,7 @@ function card(name) {
         this.value = parseInt(name[0], 10);
     }
 
-    this.suit = name[1].toLowerCase();
+    this.suit = name[1].toUpperCase();
 }
 
 module.exports = card;

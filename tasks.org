@@ -1,0 +1,2 @@
+* DONE Make selected cards deletable
+* DONE Remove selected cards from output of range

@@ -21,4 +21,8 @@ function card_pair(card1, card2) {
     this.name = this.card1.name + this.card2.name;
 }
 
+card_pair.prototype.contains = function (card) {
+    return this.card1.name === card.name || this.card2.name === card.name;
+};
+
 module.exports = card_pair;
