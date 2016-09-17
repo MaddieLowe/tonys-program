@@ -188,4 +188,33 @@ describe('rank-hands', function() {
             is_straight_flush.should.equal(false);
         });
     });
+
+    describe('quads', function() {
+        it ('should identify 3d, 3c, 3h, 3s as a quad', function() {
+            var board = [
+                new card('3d'),
+                new card('3s'),
+                new card('5d'),
+                new card('6s')
+            ];
+            var pair = new card_pair('3c','3h');
+
+            var is_quads = rank_hands.quads(pair, board);
+
+            is_quads.should.equal(true);
+        });
+
+        it ('should not identify 3d, 3h, 3s as a quad', function() {
+            var board = [
+                new card('3d'),
+                new card('5d'),
+                new card('6s')
+            ];
+            var pair = new card_pair('3c','3h');
+
+            var is_quads = rank_hands.quads(pair, board);
+
+            is_quads.should.equal(false);
+        });
+    });
 });

@@ -86,15 +86,38 @@ var straight_flush = module.exports.straight_flush = function(pair, board) {
     return false;
 };
 
+var quads = module.exports.quads = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+    var identical_cards = 1;
+    for (var i = 1; i < hand.cards.length; i++) {
+        if (hand.cards[i].value === hand.cards[i - 1].value) {
+            identical_cards++;
+        } else {
+            identical_cards = 1;
+        }
+        if (identical_cards === 4) {
+            return true;
+        }
+    }
+    return false;
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
+
+    var add_combo = function(combo_name) {
+        if (!combos[combo_name]) {
+            combos[combo_name] = 1;
+        } else {
+            combos[combo_name]++;
+        }
+    };
+
     range.forEach(function(pair) {
         if (straight_flush(pair, board)) {
-            if (!combos.straight_flush) {
-                combos.straight_flush = 1;
-            } else {
-                combos.straight_flush++;
-            }
+            add_combo('straight_flush');
+        } else if (quads(pair, board)) {
+            add_combo('quads');
         }
     });
 };
