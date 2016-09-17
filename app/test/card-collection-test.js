@@ -35,4 +35,19 @@ describe('card-collection', function() {
             cc.cards[1].value.should.eql(4);
         });
     });
+
+    describe('remove_aces', function() {
+        it ('should remove aces', function() {
+            var c1 = new card('ad');
+            var c2 = new card('ac');
+            var c3 = new card('2d');
+            var c4 = new card('5s');
+
+            var cc = new card_collection([c1, c2, c3, c4]);
+            cc.remove_aces();
+
+            cc.cards[0].name.should.eql("5S");
+            cc.cards[1].name.should.eql("2D");
+        });
+    });
 });

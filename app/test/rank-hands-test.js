@@ -60,4 +60,22 @@ describe('rank-hands', function() {
             is_wheel.should.equal(false);
         });
     });
+
+    describe('open_ended_straight_counter', function() {
+        it ('should count the number of cards in the straight', function() {
+            var cards = [
+                new card('ah'),
+                new card('qd'),
+                new card('8c'),
+                new card('7d'),
+                new card('6c'),
+                new card('2d')
+            ];
+            var pair = new card_pair('5d', '2h');
+
+            var length = rank_hands.open_ended_straight_counter(pair, cards);
+
+            length.should.eql(4);
+        });
+    });
 });

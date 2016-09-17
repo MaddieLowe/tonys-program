@@ -1,4 +1,5 @@
-function card_collection(cards) {
+function card_collection(cards_collection) {
+    var cards = JSON.parse(JSON.stringify(cards_collection));
     this.cards = [];
 
     for (var i = 0; i < cards.length; i++) {
@@ -36,6 +37,21 @@ card_collection.prototype.remove_pairs = function() {
     }
 
     this.cards = uniq_cards;
+};
+
+card_collection.prototype.remove_aces = function() {
+    var non_aces = [];
+    for (var i = 0; i < this.cards.length; i++) {
+        if (this.cards[i].value !== 14) {
+            non_aces.push(this.cards[i]);
+        }
+    }
+
+    this.cards = non_aces;
+};
+
+card_collection.prototype.is_empty = function() {
+    return this.cards.length === 0;
 };
 
 module.exports = card_collection;
