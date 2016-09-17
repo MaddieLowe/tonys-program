@@ -75,13 +75,16 @@ var matching_suits = module.exports.matching_suits = function(pair, board) {
     return max_matching_suits;
 };
 
-// var flush = module.exports.flush = function(pair, board) {
-//     matching suites
-// };
+var flush = module.exports.flush = function(pair, board) {
+    return matching_suits(pair, board) >= 5;
+};
 
-// var straight_flush = function(pair, board) {
-//     if (straight(pair, board) 
-// };
+var straight_flush = module.exports.straight_flush = function(pair, board) {
+    if (straight(pair, board) && flush(pair, board)) {
+        return true;
+    }
+    return false;
+};
 
 // module.exports.rank_table = function(range, board) {
 //     range.forEach(function(pair) {

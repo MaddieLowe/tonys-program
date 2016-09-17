@@ -125,4 +125,67 @@ describe('rank-hands', function() {
             matching_suits.should.eql(3);
         });
     });
+
+    describe('flush', function() {
+        it ('should return true if there are at least 5 cards with matching suits', function() {
+            var board = [
+                new card('ah'),
+                new card('th'),
+                new card('2h'),
+                new card('4H'),
+                new card('5H')
+            ];
+            var pair = new card_pair('2c', '3c');
+
+            var flush = rank_hands.flush(pair, board);
+
+            flush.should.equal(true);
+        });
+
+        it ('should return false if there are not 5 cards with matching suits', function() {
+            var board = [
+                new card('ah'),
+                new card('th'),
+                new card('2h'),
+                new card('4H')
+            ];
+            var pair = new card_pair('2c', '3c');
+
+            var flush = rank_hands.flush(pair, board);
+
+            flush.should.equal(false);
+        });
+    });
+
+    describe('straight_flush', function() {
+        it ('should rank 6h, 5h, 4h, 5h, 2h as a straight flush', function() {
+            var board = [
+                new card('6h'),
+                new card('5h'),
+                new card('4h'),
+                new card('3h'),
+                new card('2h')
+            ];
+            var pair = new card_pair('5d', '3c');
+
+            var is_straight_flush = rank_hands.straight_flush(pair, board);
+
+            is_straight_flush.should.equal(true);
+        });
+
+        it ('should not rank 6h, 5d, 4h, 5h, 2h as a straight flush', function() {
+            var board = [
+                new card('6h'),
+                new card('5c'),
+                new card('4h'),
+                new card('3h'),
+                new card('2h')
+            ];
+            var pair = new card_pair('5d', '3c');
+
+            var is_straight_flush = rank_hands.straight_flush(pair, board);
+
+            is_straight_flush.should.equal(false);
+        });
+    });
 });
