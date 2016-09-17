@@ -23,6 +23,7 @@ function card(name) {
     }
 
     this.suit = name[1].toUpperCase();
+    this.type = "card";
 }
 
 module.exports = card;

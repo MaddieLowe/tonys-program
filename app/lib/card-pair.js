@@ -19,6 +19,7 @@ function card_pair(card1, card2) {
     }
 
     this.name = this.card1.name + this.card2.name;
+    this.type = "pair";
 }
 
 card_pair.prototype.contains = function (card) {
