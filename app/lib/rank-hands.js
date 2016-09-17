@@ -86,10 +86,15 @@ var straight_flush = module.exports.straight_flush = function(pair, board) {
     return false;
 };
 
-// module.exports.rank_table = function(range, board) {
-//     range.forEach(function(pair) {
-//         if (straight_flush(pair, board)) {
-
-//         }
-//     });
-// };
+module.exports.rank_table = function(range, board) {
+    var combos = {};
+    range.forEach(function(pair) {
+        if (straight_flush(pair, board)) {
+            if (!combos.straight_flush) {
+                combos.straight_flush = 1;
+            } else {
+                combos.straight_flush++;
+            }
+        }
+    });
+};
