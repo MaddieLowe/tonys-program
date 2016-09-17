@@ -86,20 +86,51 @@ var straight_flush = module.exports.straight_flush = function(pair, board) {
     return false;
 };
 
-var quads = module.exports.quads = function(pair, board) {
+var identical_cards = function(pair, board) {
     var hand = new card_collection(board.concat(pair));
+    var max_identical_cards = 1;
+    var identical_cards = 1;
+    for (var i = 1; i < hand.cards.length; i++) {
+        if (hand.cards[i].value === hand.cards[i - 1].value) {
+            identical_cards++;
+            max_identical_cards = Math.max(max_identical_cards, identical_cards);
+        } else {
+            identical_cards = 1;
+        }
+    }
+    return max_identical_cards;
+};
+
+var quads = module.exports.quads = function(pair, board) {
+    return identical_cards(pair, board)  === 4;
+};
+
+var three_of_a_kind = module.exports.three_of_a_kind = function(pair, board) {
+    return identical_cards(pair, board) === 3;
+};
+
+var rank_of_highest_pair = module.exports.rank_of_highest_pair = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+
     var identical_cards = 1;
     for (var i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].value === hand.cards[i - 1].value) {
             identical_cards++;
         } else {
+            if (identical_cards === 2) {
+                return hand.cards[i - 1].value;
+            }
             identical_cards = 1;
         }
-        if (identical_cards === 4) {
-            return true;
-        }
     }
-    return false;
+    if (identical_cards === 2) {
+        return hand.cards[i - 1].value;
+    }
+    return undefined;
+};
+
+var full_house = module.exports.full_house = function(pair, board) {
+    //if (three_of_a_kind(pair, board) && rank_of_highest_pair
 };
 
 module.exports.rank_table = function(range, board) {
@@ -118,6 +149,6 @@ module.exports.rank_table = function(range, board) {
             add_combo('straight_flush');
         } else if (quads(pair, board)) {
             add_combo('quads');
-        }
+        } //else if (full_house
     });
 };

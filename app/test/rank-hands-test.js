@@ -217,4 +217,61 @@ describe('rank-hands', function() {
             is_quads.should.equal(false);
         });
     });
+
+    describe('three_of_a_kind', function() {
+        it ('should identify 3d, 3c, 3h, as three of a kind', function() {
+            var board = [
+                new card('3d'),
+                new card('5d'),
+                new card('6s')
+            ];
+            var pair = new card_pair('3c','3h');
+
+            var is_three_of_a_kind = rank_hands.three_of_a_kind(pair, board);
+
+            is_three_of_a_kind.should.equal(true);
+        });
+
+        it ('should not identify 3c, 3h as three of a kind', function() {
+            var board = [
+                new card('5d'),
+                new card('6s')
+            ];
+            var pair = new card_pair('3c','3h');
+
+            var is_three_of_a_kind = rank_hands.three_of_a_kind(pair, board);
+
+            is_three_of_a_kind.should.equal(false);
+        });
+    });
+
+    describe('rank_of_highest_pair', function() {
+        it ('should return 2 for hand 5c, 5d, 5h, 2c, 2d', function() {
+            var board = [
+                new card('5c'),
+                new card('5d'),
+                new card('5h')
+            ];
+            var pair = new card_pair('2c', '2d');
+
+            var rank = rank_hands.rank_of_highest_pair(pair, board);
+
+            rank.should.eql(2);
+        });
+
+        it ('should return 3 for hand 5c, 5d, 5h, 3h, 3d,  2c, 2d', function() {
+            var board = [
+                new card('5c'),
+                new card('5d'),
+                new card('3h'),
+                new card('3d'),
+                new card('5h')
+            ];
+            var pair = new card_pair('2c', '2d');
+
+            var rank = rank_hands.rank_of_highest_pair(pair, board);
+
+            rank.should.eql(3);
+        });
+    });
 });
