@@ -57,11 +57,33 @@ var straight = module.exports.straight = function(pair, board) {
     return false;
 };
 
-// var straight_flush = function(pair, board) {
-//     if (straight
+var matching_suits = module.exports.matching_suits = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+    hand.sort_by_suit();
+
+    var matching_suits = 1;
+    var max_matching_suits = 1;
+    for (var i = 1; i < hand.cards.length; i++) {
+        if (hand.cards[i].suit === hand.cards[i - 1].suit) {
+            matching_suits++;
+            max_matching_suits = Math.max(max_matching_suits, matching_suits);
+        } else {
+            matching_suits = 1;
+        }
+    }
+
+    return max_matching_suits;
+};
+
+// var flush = module.exports.flush = function(pair, board) {
+//     matching suites
 // };
 
-// module.exports = function(range, board) {
+// var straight_flush = function(pair, board) {
+//     if (straight(pair, board) 
+// };
+
+// module.exports.rank_table = function(range, board) {
 //     range.forEach(function(pair) {
 //         if (straight_flush(pair, board)) {
 

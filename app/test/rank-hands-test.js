@@ -108,4 +108,21 @@ describe('rank-hands', function() {
             is_straight.should.equal(false);
         });
     });
+
+    describe('matching_suits', function() {
+        it ('should determine the max number of cards with matching suits', function() {
+            var board = [
+                new card('ah'),
+                new card('th'),
+                new card('2h'),
+                new card('4d'),
+                new card('5d')
+            ];
+            var pair = new card_pair('2c', '3c');
+
+            var matching_suits = rank_hands.matching_suits(pair, board);
+
+            matching_suits.should.eql(3);
+        });
+    });
 });

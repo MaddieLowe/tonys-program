@@ -25,6 +25,17 @@ card_collection.prototype.sort = function() {
     });
 };
 
+card_collection.prototype.sort_by_suit = function() {
+    this.cards.sort(function(a, b) {
+        if (a.suit < b.suit) {
+            return -1;
+        } else if (a.suit > b.suit) {
+            return 1;
+        }
+        return 0;
+    });
+};
+
 card_collection.prototype.remove_pairs = function() {
     var uniq_cards = [];
     uniq_cards.push(this.cards[0]);
