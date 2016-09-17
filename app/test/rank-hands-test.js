@@ -1,6 +1,6 @@
 var rank_hands = require('../lib/rank-hands');
 var card = require('../lib/card');
-var card_pair = require('../lib/card');
+var card_pair = require('../lib/card-pair');
 var card_collection = require('../lib/card-collection');
 var should = require('should');
 
@@ -76,6 +76,36 @@ describe('rank-hands', function() {
             var length = rank_hands.open_ended_straight_counter(pair, cards);
 
             length.should.eql(4);
+        });
+    });
+
+    describe('straight', function() {
+        it ('should correctly identify 65432 as a straight', function() {
+            var board = [
+                new card('6h'),
+                new card('4d'),
+                new card('2s'),
+                new card('2c'),
+                new card('4c')
+            ];
+            var pair = new card_pair('5d', '3c');
+
+            var is_straight = rank_hands.straight(pair, board);
+
+            is_straight.should.equal(true);
+        });
+
+        it ('should not identify 6543 as a straight', function() {
+            var board = [
+                new card('6h'),
+                new card('4d'),
+                new card('4c')
+            ];
+            var pair = new card_pair('5d', '3c');
+
+            var is_straight = rank_hands.straight(pair, board);
+
+            is_straight.should.equal(false);
         });
     });
 });

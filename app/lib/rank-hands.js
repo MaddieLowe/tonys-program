@@ -26,7 +26,6 @@ var open_ended_straight_counter = module.exports.open_ended_straight_counter = f
     var hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
     hand.remove_aces();
-
     if (hand.is_empty()) {
         return 0;
     }
@@ -45,13 +44,18 @@ var open_ended_straight_counter = module.exports.open_ended_straight_counter = f
     return length_max_straight;
 };
 
-// var straight = function(pair, board) {
-//     if (broadway(pair, board) || wheel(pair, board)) {
-//         return true;
-//     }
+var straight = module.exports.straight = function(pair, board) {
+    if (broadway(pair, board) || wheel(pair, board)) {
+        return true;
+    }
 
-//     var length = open_ended_straight_counter
-// };
+    var length = open_ended_straight_counter(pair, board);
+    if (length >= 5) {
+        return true;
+    }
+
+    return false;
+};
 
 // var straight_flush = function(pair, board) {
 //     if (straight
