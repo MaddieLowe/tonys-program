@@ -313,4 +313,32 @@ describe('rank-hands', function() {
             is_full_house.should.equal(false);
         });
     });
+
+    describe('two_pair', function() {
+        it ('should rank 2244 as two pair', function() {
+            var board = [
+                new card('2c'),
+                new card('2d'),
+                new card('5c')
+            ];
+            var pair = new card_pair('4d', '4c');
+
+            var is_two_pair = rank_hands.two_pair(pair, board);
+
+            is_two_pair.should.equal(true);
+        });
+
+        it ('should not rank 4444 as two pair', function() {
+            var board = [
+                new card('4h'),
+                new card('4s'),
+                new card('5c')
+            ];
+            var pair = new card_pair('4d', '4c');
+
+            var is_two_pair = rank_hands.two_pair(pair, board);
+
+            is_two_pair.should.equal(false);
+        });
+    });
 });

@@ -136,6 +136,28 @@ var full_house = module.exports.full_house = function(pair, board) {
     return false;
 };
 
+var two_pair = module.exports.two_pair = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+
+    var identical_cards = 1;
+    var pairs = 0;
+    for (var i = 1; i < hand.cards.length; i++) {
+        if (hand.cards[i].value === hand.cards[i - 1].value) {
+            identical_cards++;
+        } else {
+            if (identical_cards === 2) {
+                pairs++;
+            }
+            identical_cards = 1;
+        }
+    }
+    if (identical_cards === 2) {
+        pairs++;
+    }
+
+    return pairs >= 2;
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 
@@ -154,6 +176,12 @@ module.exports.rank_table = function(range, board) {
             add_combo('quads');
         } else if (full_house(pair, board)) {
             add_combo('full_house');
-        }
+        } else if (flush(pair, board)) {
+            add_combo('flush');
+        } else if (straight(pair, board)) {
+            add_combo('straight');
+        } else if (three_of_a_kind(pair, board)) {
+            add_combo('three_of_a_kind');
+        } //else if (
     });
 };
