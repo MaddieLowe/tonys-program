@@ -126,11 +126,14 @@ var rank_of_highest_pair = module.exports.rank_of_highest_pair = function(pair, 
     if (identical_cards === 2) {
         return hand.cards[i - 1].value;
     }
-    return undefined;
+    return 0;
 };
 
 var full_house = module.exports.full_house = function(pair, board) {
-    //if (three_of_a_kind(pair, board) && rank_of_highest_pair
+    if (three_of_a_kind(pair, board) && rank_of_highest_pair(pair, board) > 0) {
+        return true;
+    }
+    return false;
 };
 
 module.exports.rank_table = function(range, board) {
@@ -149,6 +152,8 @@ module.exports.rank_table = function(range, board) {
             add_combo('straight_flush');
         } else if (quads(pair, board)) {
             add_combo('quads');
-        } //else if (full_house
+        } else if (full_house(pair, board)) {
+            add_combo('full_house');
+        }
     });
 };

@@ -273,5 +273,44 @@ describe('rank-hands', function() {
 
             rank.should.eql(3);
         });
+
+        it ('should return 0 for hand 5c, 5d, 5h, 2d', function() {
+            var board = [
+                new card('5c'),
+                new card('5d')
+            ];
+            var pair = new card_pair('5H', '2d');
+
+            var rank = rank_hands.rank_of_highest_pair(pair, board);
+
+            rank.should.eql(0);
+        });
+    });
+
+    describe('full_house', function() {
+        it ('should identify 33322 as a full house', function() {
+            var board = [
+                new card('3d'),
+                new card('3c'),
+                new card('3s')
+            ];
+            var pair = new card_pair('2d', '2c');
+
+            var is_full_house = rank_hands.full_house(pair, board);
+
+            is_full_house.should.equal(true);
+        });
+
+        it ('should not identify 3322 as a full house', function() {
+            var board = [
+                new card('3d'),
+                new card('3s')
+            ];
+            var pair = new card_pair('2d', '2c');
+
+            var is_full_house = rank_hands.full_house(pair, board);
+
+            is_full_house.should.equal(false);
+        });
     });
 });
