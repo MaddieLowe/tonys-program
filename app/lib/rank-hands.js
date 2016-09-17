@@ -9,8 +9,21 @@ var broadway = module.exports.broadway = function(pair, board) { // broadway is 
     return false;
 };
 
+var wheel = module.exports.wheel = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+    hand.remove_pairs();
+
+    var last_card = hand.cards.length - 1;
+    if (hand.cards[last_card].value === 2 &&
+        hand.cards[last_card - 3].value === 5 &&
+        hand.cards[0].value === 14) {
+        return true;
+    }
+    return false;
+};
+
 // var straight = function(pair, board) {
-//     if (broadway
+//     if (broadway(pair, board) || wheel
 // };
 
 // var straight_flush = function(pair, board) {

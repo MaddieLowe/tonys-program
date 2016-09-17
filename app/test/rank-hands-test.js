@@ -32,4 +32,32 @@ describe('rank-hands', function() {
             is_broadway.should.equal(false);
         });
     });
+
+    describe('wheel', function() {
+        it ('should identify A2345 as a wheel', function() {
+            var a = new card('ah');
+            var two = new card('2d');
+            var four = new card('4c');
+            var four2 = new card('4d');
+            var five = new card('5d');
+            var pair = new card('3d', '5c');
+
+            var is_wheel = rank_hands.wheel(pair, [a, five, two, four, four2]);
+
+            is_wheel.should.equal(true);
+        });
+
+        it ('should not identify AQJT9 as a wheel', function() {
+            var a = new card('AS');
+            var nine = new card('9c');
+            var j = new card('jd');
+            var t = new card('ts');
+            var t2 = new card('td');
+            var pair = new card('qd', 'qs');
+
+            var is_wheel = rank_hands.wheel(pair, [a, nine, j, t, t2]);
+
+            is_wheel.should.equal(false);
+        });
+    });
 });
