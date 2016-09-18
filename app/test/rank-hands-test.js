@@ -381,7 +381,7 @@ describe('rank-hands', function() {
 
             var is_top_pair = rank_hands.top_pair(pair, board);
 
-            is_top_pair.should.eql(true);
+            is_top_pair.should.equal(true);
         });
 
         it ('should not rank AT in the hand and QT9 in the board as a top pair', function() {
@@ -394,7 +394,35 @@ describe('rank-hands', function() {
 
             var is_top_pair = rank_hands.top_pair(pair, board);
 
-            is_top_pair.should.eql(false);
+            is_top_pair.should.equal(false);
+        });
+    });
+
+    describe('pocket_pair_below_top_pair', function() {
+        it ('should rank 77 in the hand and Q65 in the board as a pocket pair below top pair', function() {
+            var board = [
+                new card('QS'),
+                new card('6H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('7h', '7s');
+
+            var is_pocket_pair = rank_hands.pocket_pair_below_top_pair(pair, board);
+
+            is_pocket_pair.should.equal(true);
+        });
+
+        it ('should not rank 77 in the hand and Q85 in the board as a pocket pair below top pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('7h', '7s');
+
+            var is_pocket_pair = rank_hands.pocket_pair_below_top_pair(pair, board);
+
+            is_pocket_pair.should.equal(false);
         });
     });
 });
