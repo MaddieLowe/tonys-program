@@ -187,6 +187,16 @@ var middle_pair = module.exports.middle_pair = function(pair, board) {
     return highest_pair === sorted_board.cards[1].value;
 };
 
+var weak_pair = module.exports.weak_pair = function(pair, board) {
+    var sorted_board = new card_collection(board);
+    var highest_pair = rank_of_highest_pair(pair, board);
+    if (highest_pair === 0 || highest_pair >= sorted_board.cards[1].value) {
+        return false;
+    } else {
+        return true;
+    }
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 
@@ -219,6 +229,8 @@ module.exports.rank_table = function(range, board) {
             add_combo('top_pair');
         } else if (pocket_pair_below_top_pair(pair, board)) {
             add_combo('pocket_pair_below_top_pair');
-        } //else if (middle_pair
+        } else if (middle_pair(pair, board)) {
+            add_combo('middle_pair');
+        } //else if (weak_pair
     });
 };

@@ -427,7 +427,20 @@ describe('rank-hands', function() {
     });
 
     describe('middle_pair', function() {
-        it ('should rank 77 in the hand and Q85 in the board as a middle pair', function() {
+        it ('shoudl rank 82 in the hand and Q85 in the board as a middle pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('2h', '8s');
+
+            var middle_pair = rank_hands.middle_pair(pair, board);
+
+            middle_pair.should.equal(true)
+        });
+
+        it ('should not rank 77 in the hand and Q85 in the board as a middle pair', function() {
             var board = [
                 new card('QS'),
                 new card('8H'),
@@ -438,6 +451,60 @@ describe('rank-hands', function() {
             var middle_pair = rank_hands.middle_pair(pair, board);
 
             middle_pair.should.equal(false);
+        });
+    });
+
+    describe('weak_pair', function() {
+        it ('should rank 59 in the hand and Q85 in the board as a weak pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('9h', '5s');
+
+            var weak_pair = rank_hands.weak_pair(pair, board);
+
+            weak_pair.should.equal(true);
+        });
+
+        it ('should rank 33 in the hand and Q85 in the board as a weak pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('3h', '3s');
+
+            var weak_pair = rank_hands.weak_pair(pair, board);
+
+            weak_pair.should.equal(true);
+        });
+
+        it ('should rank 77 in the hand and Q85 in the board as a weak pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('7h', '7s');
+
+            var weak_pair = rank_hands.weak_pair(pair, board);
+
+            weak_pair.should.equal(true);
+        })
+
+        it ('should not rank 87 in the hand and Q85 in the board as a weak pair', function() {
+            var board = [
+                new card('QS'),
+                new card('8H'),
+                new card('5D')
+            ];
+            var pair = new card_pair('8h', '7s');
+
+            var weak_pair = rank_hands.weak_pair(pair, board);
+
+            weak_pair.should.equal(false);
         });
     });
 });
