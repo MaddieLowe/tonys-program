@@ -164,6 +164,17 @@ var overpair = module.exports.overpair = function(pair, board) {
     return highest_pair > sorted_board.cards[0].value;
 };
 
+var top_pair = module.exports.top_pair = function(pair, board) {
+    var sorted_board = new card_collection(board);
+
+    if (sorted_board.cards[0].value === sorted_board.cards[1].value) {
+        return false;
+    }
+
+    var highest_pair = rank_of_highest_pair(pair, board);
+    return highest_pair === sorted_board.cards[0].value;
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 
@@ -190,8 +201,8 @@ module.exports.rank_table = function(range, board) {
             add_combo('three_of_a_kind');
         } else if (two_pair(pair, board)) {
             add_combo('two_pair');
-        }// else if (overpair) {
-
-       // }
+        } else if (overpair) {
+            add_combo('overpair');
+        } //else if (top_pair
     });
 };

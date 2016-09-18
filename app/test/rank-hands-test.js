@@ -369,4 +369,32 @@ describe('rank-hands', function() {
             is_overpair.should.equal(false);
         });
     });
+
+    describe('top_pair', function() {
+        it ('should rank AQ in the hand and QT9 in the board as a top pair', function() {
+            var board = [
+                new card('Qs'),
+                new card('Td'),
+                new card('9d')
+            ];
+            var pair = new card_pair('Qd', 'Ad');
+
+            var is_top_pair = rank_hands.top_pair(pair, board);
+
+            is_top_pair.should.eql(true);
+        });
+
+        it ('should not rank AT in the hand and QT9 in the board as a top pair', function() {
+            var board = [
+                new card('Qs'),
+                new card('Td'),
+                new card('9d')
+            ];
+            var pair = new card_pair('Ts', 'Ad');
+
+            var is_top_pair = rank_hands.top_pair(pair, board);
+
+            is_top_pair.should.eql(false);
+        });
+    });
 });
