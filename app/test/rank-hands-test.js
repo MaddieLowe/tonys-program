@@ -341,4 +341,32 @@ describe('rank-hands', function() {
             is_two_pair.should.equal(false);
         });
     });
+
+    describe('overpair', function() {
+        it ('should rank AA in your hand and TQJ in the board as an overpair', function() {
+            var board = [
+                new card('TH'),
+                new card('Qd'),
+                new card('Js')
+            ];
+            var pair = new card_pair('Ah', 'As');
+
+            var is_overpair = rank_hands.overpair(pair, board);
+
+            is_overpair.should.equal(true);
+        });
+
+        it ('should not rank TQ in your hand and AAJ in the board as an overpair', function() {
+            var board = [
+                new card('AH'),
+                new card('Ad'),
+                new card('Js')
+            ];
+            var pair = new card_pair('Th', 'Qs');
+
+            var is_overpair = rank_hands.overpair(pair, board);
+
+            is_overpair.should.equal(false);
+        });
+    });
 });
