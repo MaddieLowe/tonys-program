@@ -507,4 +507,32 @@ describe('rank-hands', function() {
             weak_pair.should.equal(false);
         });
     });
+
+    describe('ace_high', function() {
+        it ('should rank A2 in the hand and 753 in the board as an ace high', function() {
+            var board = [
+                new card('7s'),
+                new card('5d'),
+                new card('3s')
+            ];
+            var pair = new card_pair('Ah', '2d');
+
+            var is_ace_high = rank_hands.ace_high(pair, board);
+
+            is_ace_high.should.eql(true);
+        });
+
+        it ('should not rank 42 in the hand and 753 in the board as an ace high', function() {
+            var board = [
+                new card('7s'),
+                new card('5d'),
+                new card('3s')
+            ];
+            var pair = new card_pair('4h', '2d');
+
+            var is_ace_high = rank_hands.ace_high(pair, board);
+
+            is_ace_high.should.eql(false);
+        });
+    });
 });
