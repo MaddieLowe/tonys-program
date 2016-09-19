@@ -209,7 +209,19 @@ var flush_suit = module.exports.flush_suit = function(pair, board) {
 };
 
 var flush_draw = module.exports.flush_draw = function(pair, board) {
-    var matching_suits = matching_suits(pair, board);
+    var ms = matching_suits(pair, board);
+    var fs = flush_suit(pair, board);
+
+    var flush_suit_in_hole_cards = false;
+    if (pair.card1.suit === fs ||
+        pair.card2.suit === fs) {
+        flush_suit_in_hole_cards = true;
+    }
+
+    if (!flush_suit_in_hole_cards || ms != 4) {
+        return false;
+    }
+    return true;
 };
 
 module.exports.rank_table = function(range, board) {

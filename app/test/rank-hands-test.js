@@ -550,4 +550,45 @@ describe('rank-hands', function() {
             flush_suit.should.eql("C");
         });
     });
+
+    describe('flush_draw', function() {
+        it ('should rank AC, 5D in your hand and 2C, 3C, 9C in the board as a flush draw', function() {
+            var board = [
+                new card('2c'),
+                new card('3c'),
+                new card('9c')
+            ];
+            var pair = new card_pair('ac', '5d');
+
+            var is_flush_draw = rank_hands.flush_draw(pair, board);
+
+            is_flush_draw.should.eql(true);
+        });
+    });
+
+    it ('should rank AC, 5C in your hand and 2C, 3C, 9D in the board as a flush draw', function() {
+        var board = [
+            new card('2c'),
+            new card('3c'),
+            new card('9d')
+        ];
+        var pair = new card_pair('ac', '5c');
+
+        var is_flush_draw = rank_hands.flush_draw(pair, board);
+
+        is_flush_draw.should.eql(true);
+    });
+
+    it ('should not rank AC, 5C in your hand and 2C, 3C, 9C in the board as a flush draw', function() {
+        var board = [
+            new card('2c'),
+            new card('3c'),
+            new card('9c')
+        ];
+        var pair = new card_pair('ac', '5c');
+
+        var is_flush_draw = rank_hands.flush_draw(pair, board);
+
+        is_flush_draw.should.eql(false);
+    });
 });
