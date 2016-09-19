@@ -535,4 +535,19 @@ describe('rank-hands', function() {
             is_ace_high.should.eql(false);
         });
     });
+
+    describe('flush_suit', function() {
+        it ('should return C as the flush suit in AC, 2C, 3C, 4D, 5S', function() {
+            var board = [
+                new card('ac'),
+                new card('2c'),
+                new card('3c')
+            ];
+            var pair = new card_pair('4d', '5s');
+
+            var flush_suit = rank_hands.flush_suit(pair, board);
+
+            flush_suit.should.eql("C");
+        });
+    });
 });

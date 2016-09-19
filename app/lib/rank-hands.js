@@ -202,6 +202,16 @@ var ace_high = module.exports.ace_high = function(pair, board) {
     return sorted_pair.cards[0].value === 14 && rank_of_highest_pair(pair, board) === 0;
 };
 
+var flush_suit = module.exports.flush_suit = function(pair, board) {
+    var hand = new card_collection(board.concat(pair));
+    hand.sort_by_suit();
+    return hand.cards[0].suit;
+};
+
+var flush_draw = module.exports.flush_draw = function(pair, board) {
+    var matching_suits = matching_suits(pair, board);
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 

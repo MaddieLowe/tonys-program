@@ -26,14 +26,34 @@ card_collection.prototype.sort = function() {
 };
 
 card_collection.prototype.sort_by_suit = function() {
-    this.cards.sort(function(a, b) {
-        if (a.suit < b.suit) {
-            return -1;
-        } else if (a.suit > b.suit) {
+    var suit_enum = {
+        C: 0,
+        D: 1,
+        S: 2,
+        H: 3
+    };
+    var temp = [];
+    for (var i = 0; i < this.cards.length; i++) {
+        var index = suit_enum[this.cards[i].suit];
+        if (!temp[index]) temp[index] = [];
+        temp[index].push(this.cards[i]);
+    }
+    temp.sort(function(a, b) {
+        if (a.length < b.length) {
             return 1;
+        } else if (a.length > b.length) {
+            return -1;
         }
         return 0;
     });
+
+    var sorted_cards = [];
+    for (var j = 0; j < temp.length; j++) {
+        if (temp[j]) {
+            sorted_cards = sorted_cards.concat(temp[j]);
+        }
+    }
+    this.cards = sorted_cards;
 };
 
 card_collection.prototype.remove_pairs = function() {

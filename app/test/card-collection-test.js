@@ -62,12 +62,12 @@ describe('card-collection', function() {
             var cc = new card_collection([c1, c2, c3, cp1, c4]);
             cc.sort_by_suit();
 
-            cc.cards[0].name.should.eql("4C");
-            cc.cards[1].name.should.eql("2D");
-            cc.cards[2].name.should.eql("AH");
-            cc.cards[3].name.should.eql("KS");
-            cc.cards[4].name.should.eql("JS");
-            cc.cards[5].name.should.eql("TS");
+            cc.cards[0].name.should.eql("KS");
+            cc.cards[1].name.should.eql("JS");
+            cc.cards[2].name.should.eql("TS");
+            cc.cards[3].name.should.eql("4C");
+            cc.cards[4].name.should.eql("2D");
+            cc.cards[5].name.should.eql("AH");
         });
     });
 });
