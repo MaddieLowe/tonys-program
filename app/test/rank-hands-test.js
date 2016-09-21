@@ -703,4 +703,48 @@ describe('rank-hands', function() {
             is_backdoor_flush_draw.should.eql(false);
         });
     });
+
+    describe('backdoor_nut_flush_draw', function() {
+        it ('should rank As in the hand and 9s, 5s, 2d in the board as a backdoor nut flush draw', function() {
+            var board = [
+                new card('9s'),
+                new card('5s'),
+                new card('2d'),
+                new card('3d')
+            ];
+            var pair = new card_pair('As', '7h');
+
+            var is_backdoor_nut_flush_draw = rank_hands.backdoor_nut_flush_draw(pair, board);
+
+            is_backdoor_nut_flush_draw.should.equal(true);
+        });
+
+        it ('should rank Ks in the hand and As, 5s, 2d in the board as a backdoor nut flush draw', function() {
+            var board = [
+                new card('As'),
+                new card('5s'),
+                new card('2d'),
+                new card('3d')
+            ];
+            var pair = new card_pair('Ks', '7h');
+
+            var is_backdoor_nut_flush_draw = rank_hands.backdoor_nut_flush_draw(pair, board);
+
+            is_backdoor_nut_flush_draw.should.equal(true);
+        });
+
+        it ('should not rank Qs in the hand and As, 5s, 2d in the board as backdoor nut flush draw', function() {
+            var board = [
+                new card('As'),
+                new card('5s'),
+                new card('2d'),
+                new card('3d')
+            ];
+            var pair = new card_pair('Qs', '7h');
+
+            var is_backdoor_nut_flush_draw = rank_hands.backdoor_nut_flush_draw(pair, board);
+
+            is_backdoor_nut_flush_draw.should.equal(false);
+        });
+    });
 });

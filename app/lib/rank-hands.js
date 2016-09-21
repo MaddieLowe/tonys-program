@@ -240,10 +240,7 @@ var nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) 
     return first_missing_rank;
 };
 
-var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
-    var fd = flush_draw(pair, board);
-    if (!fd) return false;
-
+var nut_flush_draw_util = function(pair, board) {
     var fs = flush_suit(pair, board);
     var first_missing_rank = nut_flush_card(board, fs);
 
@@ -260,8 +257,22 @@ var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
     return is_nut_flush_draw;
 };
 
+var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
+    var fd = flush_draw(pair, board);
+    if (!fd) return false;
+
+    return nut_flush_draw_util(pair, board);
+};
+
 var backdoor_flush_draw = module.exports.backdoor_flush_draw = function(pair, board) {
     return flush_draw_util(pair, board, 3);
+};
+
+var backdoor_nut_flush_draw = module.exports.backdoor_nut_flush_draw = function(pair, board) {
+    var fd = backdoor_flush_draw(pair, board);
+    if (!fd) return false;
+
+    return nut_flush_draw_util(pair, board);
 };
 
 module.exports.rank_table = function(range, board) {
@@ -311,6 +322,9 @@ module.exports.rank_table = function(range, board) {
             if (nut_flush_draw(pair, board)) {
                 add_combo('nut_flush_draw');
             }
-        } //else if(backdoor_flush_draw
+        } else if(backdoor_flush_draw(pair, board)) {
+            add_combo('backdoor_flush_draw');
+            //if (backdoor_nut_flush_draw
+        }
     });
 };
