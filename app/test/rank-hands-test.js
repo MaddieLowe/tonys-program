@@ -591,4 +591,75 @@ describe('rank-hands', function() {
 
         is_flush_draw.should.eql(false);
     });
+
+    describe('nut_flush_card', function() {
+        it ('should return 14 if you have 9s, 5s, 2s in the board', function() {
+            var board = [
+                new card('9s'),
+                new card('5s'),
+                new card('2s')
+            ];
+
+            var nut_flush_card = rank_hands.nut_flush_card(board, 'S');
+
+            nut_flush_card.should.eql(14);
+        });
+
+        it ('should return 12 if you have As, Qs, 5s, 2s in the board', function() {
+            var board = [
+                new card('As'),
+                new card('Ks'),
+                new card('5s'),
+                new card('2s')
+            ];
+
+            var nut_flush_card = rank_hands.nut_flush_card(board, 'S');
+
+            nut_flush_card.should.eql(12);
+        });
+    });
+
+    describe('nut_flush_draw', function() {
+        it ('should rank As in the hand and 9s, 5s, 2s in the board as a nut flush draw', function() {
+            var board = [
+                new card('9s'),
+                new card('5s'),
+                new card('2s'),
+                new card('3d')
+            ];
+            var pair = new card_pair('As', '7h');
+
+            var is_nut_flush_draw = rank_hands.nut_flush_draw(pair, board);
+
+            is_nut_flush_draw.should.equal(true);
+        });
+
+        it ('should rank Ks in the hand and As, 5s, 2s in the board as a nut flush draw', function() {
+            var board = [
+                new card('As'),
+                new card('5s'),
+                new card('2s'),
+                new card('3d')
+            ];
+            var pair = new card_pair('Ks', '7h');
+
+            var is_nut_flush_draw = rank_hands.nut_flush_draw(pair, board);
+
+            is_nut_flush_draw.should.equal(true);
+        });
+
+        it ('should not rank Qs in the hand and As, 5s, 2s in the board as a nut flush draw', function() {
+            var board = [
+                new card('As'),
+                new card('5s'),
+                new card('2s'),
+                new card('3d')
+            ];
+            var pair = new card_pair('Qs', '7h');
+
+            var is_nut_flush_draw = rank_hands.nut_flush_draw(pair, board);
+
+            is_nut_flush_draw.should.equal(false);
+        });
+    });
 });

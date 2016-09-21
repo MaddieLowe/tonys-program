@@ -224,6 +224,38 @@ var flush_draw = module.exports.flush_draw = function(pair, board) {
     return true;
 };
 
+var nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) {
+    var sorted_board = new card_collection(board);
+    var first_missing_rank = 14;
+    for (var i = 0; i < sorted_board.cards.length; i++) {
+        if (sorted_board.cards[i].suit === flushsuit && sorted_board.cards[i].value === first_missing_rank) {
+            first_missing_rank--;
+        }
+    }
+
+    return first_missing_rank;
+};
+
+var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
+    var fd = flush_draw(pair, board);
+    if (!fd) return false;
+
+    var fs = flush_suit(pair, board);
+    var first_missing_rank = nut_flush_card(board, fs);
+
+    var is_nut_flush_draw = false;
+    var card_matches_nut = function(card) {
+        if (card.value === first_missing_rank && card.suit === fs) {
+            is_nut_flush_draw = true;
+        }
+    };
+
+    card_matches_nut(pair.card1);
+    card_matches_nut(pair.card2);
+
+    return is_nut_flush_draw;
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 
@@ -266,6 +298,10 @@ module.exports.rank_table = function(range, board) {
             add_combo('no_hand');
         }
 
-        //if (flush_draw
+        if (flush_draw(pair, board)) {
+            add_combo('flush_draw');
+            // TODO: write nut_flush_draw
+            //if (nut_flush_draw
+        }
     });
 };
