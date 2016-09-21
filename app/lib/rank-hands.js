@@ -208,7 +208,7 @@ var flush_suit = module.exports.flush_suit = function(pair, board) {
     return hand.cards[0].suit;
 };
 
-var flush_draw = module.exports.flush_draw = function(pair, board) {
+var flush_draw_util = function(pair, board, number_of_matches) {
     var ms = matching_suits(pair, board);
     var fs = flush_suit(pair, board);
 
@@ -218,10 +218,14 @@ var flush_draw = module.exports.flush_draw = function(pair, board) {
         flush_suit_in_hole_cards = true;
     }
 
-    if (!flush_suit_in_hole_cards || ms != 4) {
+    if (!flush_suit_in_hole_cards || ms != number_of_matches) {
         return false;
     }
     return true;
+};
+
+var flush_draw = module.exports.flush_draw = function(pair, board) {
+    return flush_draw_util(pair, board, 4);
 };
 
 var nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) {
@@ -254,6 +258,10 @@ var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
     card_matches_nut(pair.card2);
 
     return is_nut_flush_draw;
+};
+
+var backdoor_flush_draw = module.exports.backdoor_flush_draw = function(pair, board) {
+    return flush_draw_util(pair, board, 3);
 };
 
 module.exports.rank_table = function(range, board) {
@@ -300,8 +308,9 @@ module.exports.rank_table = function(range, board) {
 
         if (flush_draw(pair, board)) {
             add_combo('flush_draw');
-            // TODO: write nut_flush_draw
-            //if (nut_flush_draw
-        }
+            if (nut_flush_draw(pair, board)) {
+                add_combo('nut_flush_draw');
+            }
+        } //else if(backdoor_flush_draw
     });
 };
