@@ -275,6 +275,12 @@ var backdoor_nut_flush_draw = module.exports.backdoor_nut_flush_draw = function(
     return nut_flush_draw_util(pair, board);
 };
 
+var overcards = module.exports.overcards = function(pair, board) {
+    var sorted_board = new card_collection(board);
+
+    return pair.card2.value > sorted_board.cards[0].value;
+};
+
 module.exports.rank_table = function(range, board) {
     var combos = {};
 
@@ -324,7 +330,13 @@ module.exports.rank_table = function(range, board) {
             }
         } else if(backdoor_flush_draw(pair, board)) {
             add_combo('backdoor_flush_draw');
-            //if (backdoor_nut_flush_draw
+            if (backdoor_nut_flush_draw(pair, board)) {
+                add_combo('backdoor_nut_flush_draw');
+            }
+        }
+
+        if (overcards(pair, board)) {
+            add_combo('overcards');
         }
     });
 };

@@ -747,4 +747,32 @@ describe('rank-hands', function() {
             is_backdoor_nut_flush_draw.should.equal(false);
         });
     });
+
+    describe('overcards', function() {
+        it ('should rank AQ in your hand and J95 in the board as overcards', function() {
+            var board = [
+                new card('js'),
+                new card('9d'),
+                new card('5h')
+            ];
+            var pair = new card_pair('As', 'Qd');
+
+            var is_overcards = rank_hands.overcards(pair, board);
+
+            is_overcards.should.equal(true);
+        });
+
+        it ('should not rank AJ in your hand and Q95 in the board as overcards', function() {
+            var board = [
+                new card('Qs'),
+                new card('9d'),
+                new card('5h')
+            ];
+            var pair = new card_pair('As', 'Jd');
+
+            var is_overcards = rank_hands.overcards(pair, board);
+
+            is_overcards.should.equal(false);
+        });
+    });
 });
