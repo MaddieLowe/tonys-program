@@ -27,7 +27,7 @@ $(document).ready(function() {
         console.error(message);
 
         var output = "";
-        if (selected_cards.length > 0) {
+        if (selected_cards.length >= 3) {
             var combos = rank_hands.rank_table(final_range, selected_cards);
             for (var type in combos) {
                 output += "<div>" + type + ": " + combos[type] + "</div>";
