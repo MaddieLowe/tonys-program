@@ -1,5 +1,6 @@
 var poker_range_selector = require('./widgets/poker-range-selector');
 var card_selector = require('./widgets/card-selector');
+var rank_hands = require('./lib/rank-hands');
 
 $(document).ready(function() {
     var poker_range_element = $('poker-range');
@@ -25,7 +26,19 @@ $(document).ready(function() {
         }
         console.error(message);
 
-        return final_range;
+        var output = "";
+        if (selected_cards.length > 0) {
+            var combos = rank_hands.rank_table(final_range, selected_cards);
+            for (var type in combos) {
+                output += "<div>" + type + ": " + combos[type] + "</div>";
+                console.error(type + ": " + combos[type]);
+            }
+        }
+        var output_div = $('.output');
+        output_div.empty();
+        output_div.append(output);
+
+        return combos;
     };
 
     poker_range_emitter.on('changed', function() {

@@ -3,6 +3,9 @@ var card_collection = require('./card-collection');
 var broadway = module.exports.broadway = function(pair, board) { // broadway is a straight A,K,Q,J,T
     var hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
+
+    if (hand.cards.length < 5) return false;
+
     if (hand.cards[0].value === 14 && hand.cards[4].value === 10) {
         return true;
     }
@@ -307,7 +310,7 @@ module.exports.rank_table = function(range, board) {
             add_combo('three_of_a_kind');
         } else if (two_pair(pair, board)) {
             add_combo('two_pair');
-        } else if (overpair) {
+        } else if (overpair(pair, board)) {
             add_combo('overpair');
         } else if (top_pair(pair, board)) {
             add_combo('top_pair');
@@ -339,4 +342,6 @@ module.exports.rank_table = function(range, board) {
             add_combo('overcards');
         }
     });
+
+    return combos;
 };

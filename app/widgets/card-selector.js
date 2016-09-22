@@ -53,6 +53,7 @@ module.exports = function(element, model) {
             return function(event) {
                 model.splice(model.indexOf(card), 1);
                 update_displayed_cards();
+                emitter.emit('changed');
             };
         };
 

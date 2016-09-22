@@ -1,4 +1,4 @@
-@row-padding: 5px;
+@row-padding: 2px;
 
 range {
     display: inline-block;
@@ -24,7 +24,7 @@ range {
         margin-left: @row-padding*2;
         width: @column-height;
         height: @column-height;
-        background-color: @light-highlight;
+        background-color: @paired-color;
         display: inline-block;
         cursor: pointer;
 	border-radius: @border-radius;
@@ -32,6 +32,14 @@ range {
 	font-size: @font-size-small;
 	line-height: @column-height;
 	color: @font-color-default;
+
+        &.offsuit {
+            background-color: @offsuit-color;
+        }
+
+        &.suited {
+            background-color: @light-highlight;
+        }
 
         &:hover {
 	    background-color: @hover-highlight;

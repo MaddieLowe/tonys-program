@@ -1,4 +1,5 @@
+
 * DONE Make selected cards deletable
 * DONE Remove selected cards from output of range
-* TODO Put in algorithm. Display:
-** Text output of each hand strength (how many of them can be made with the range and the board)
+* DONE Put in algorithm. Display:
+** DONE Text output of each hand strength (how many of them can be made with the range and the board)
