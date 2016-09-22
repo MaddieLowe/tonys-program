@@ -4,9 +4,11 @@
 * DONE Put in algorithm. Display:
 ** DONE Text output of each hand strength (how many of them can be made with the range and the board)
 * TODO Random button that fills in three random cards
-* TODO Drag functionality
-
-Bugs
-User experience improvements
-Features
-Design ideas
+* TODO Bugs
+* TODO User Expericence Improvments
+** Drag functinallity
+* TODO Features
+** Clear Button for Board
+** Clear Button for Range
+** Random Button for Board, fills in three random board cards
+* TODO Design Ideas
