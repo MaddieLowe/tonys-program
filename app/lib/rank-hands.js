@@ -187,7 +187,13 @@ var pocket_pair_below_top_pair = module.exports.pocket_pair_below_top_pair = fun
 var middle_pair = module.exports.middle_pair = function(pair, board) {
     var sorted_board = new card_collection(board);
     var highest_pair = rank_of_highest_pair(pair, board);
-    return highest_pair === sorted_board.cards[1].value;
+
+    if (sorted_board.cards[1].value === sorted_board.cards[2].value) {
+        return false;
+    } else if (highest_pair === sorted_board.cards[1].value) {
+        return true;
+    }
+    return false;
 };
 
 var weak_pair = module.exports.weak_pair = function(pair, board) {
