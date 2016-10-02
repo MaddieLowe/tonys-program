@@ -281,7 +281,8 @@ var backdoor_nut_flush_draw = module.exports.backdoor_nut_flush_draw = function(
 var overcards = module.exports.overcards = function(pair, board) {
     var sorted_board = new card_collection(board);
 
-    return pair.card2.value > sorted_board.cards[0].value;
+    return pair.card1.value !== pair.card2.value &&
+        pair.card2.value > sorted_board.cards[0].value;
 };
 
 module.exports.rank_table = function(range, board) {

@@ -774,5 +774,18 @@ describe('rank-hands', function() {
 
             is_overcards.should.equal(false);
         });
+
+        it ('should not count AA in your hand and K65 in the board as overcards', function() {
+            var board = [
+                new card('ks'),
+                new card('6d'),
+                new card('5h')
+            ];
+            var pair = new card_pair('As', 'Ad');
+
+            var is_overcards = rank_hands.overcards(pair, board);
+
+            is_overcards.should.equal(false);
+        });
     });
 });

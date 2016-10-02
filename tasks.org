@@ -4,13 +4,14 @@
 * DONE Put in algorithm. Display:
 ** DONE Text output of each hand strength (how many of them can be made with the range and the board)
 * TODO Bugs
-** Overcards: pocket pairs should not be overcards EX:AA on a K65 boardshould not be count as overcards *
-** when adding a card multiple ranks can be highlighted
-** the same card may be put on the board twice
+** DONE Overcards: pocket pairs should not be overcards EX:AA on a K65 boardshould not be count as overcards *
 ** Paired boards give funny readouts with errors Ex: Range:AKo on 3h3cTs gives 12 middle pair combos (should be 0)*
 * TODO User Expericence Improvments
-** Drag functinallity
-** Change order of hand strength output (highest strength first)
+** TODO Drag functinallity
+** TODO Change order of hand strength output (highest strength first)
+** TODO User input cleansing
+*** the same card may be put on the board twice
+*** when adding a card multiple ranks can be highlighted
 * TODO Features
 ** Clear Button for Board
 ** Clear Button for Range
