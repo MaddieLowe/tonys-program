@@ -3,7 +3,7 @@ var card_collection = require('./card-collection');
 var broadway = module.exports.broadway = function(pair, board) { // broadway is a straight A,K,Q,J,T
     var hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
-
+    
     if (hand.cards.length < 5) return false;
 
     if (hand.cards[0].value === 14 && hand.cards[4].value === 10) {
@@ -15,6 +15,8 @@ var broadway = module.exports.broadway = function(pair, board) { // broadway is 
 var wheel = module.exports.wheel = function(pair, board) {
     var hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
+
+    if (hand.length < 5) return false;
 
     var last_card = hand.cards.length - 1;
     if (hand.cards[last_card].value === 2 &&
