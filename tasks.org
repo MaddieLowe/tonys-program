@@ -9,6 +9,8 @@
 ** DONE Paired boards give funny readouts with errors
    Ex: Range:AKo on 3h3cTs gives 12 middle pair combos (should be 0)
    Maddie says: done for now, re-open if more examples arise
+** Errors on specific boards
+   Range: QQ, Board: Qs2s3d error thrown in wheel function
 * TODO User Expericence Improvments
 ** TODO Drag functionality
 ** TODO Change order of hand strength output (highest strength first)
