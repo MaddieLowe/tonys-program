@@ -16,7 +16,7 @@ var wheel = module.exports.wheel = function(pair, board) {
     var hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
 
-    if (hand.length < 5) return false;
+    if (hand.cards.length < 5) return false;
 
     var last_card = hand.cards.length - 1;
     if (hand.cards[last_card].value === 2 &&

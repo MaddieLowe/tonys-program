@@ -59,6 +59,19 @@ describe('rank-hands', function() {
 
             is_wheel.should.equal(false);
         });
+
+        it ('should not identify QQ, Qs2s3d as a wheel', function() {
+            var board = [
+                new card('Qs'),
+                new card('2s'),
+                new card('3d')
+            ];
+            var pair = new card_pair('Qs', 'Qd');
+
+            var is_wheel = rank_hands.wheel(pair, board);
+
+            is_wheel.should.equal(false);
+        });
     });
 
     describe('open_ended_straight_counter', function() {
