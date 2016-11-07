@@ -27,6 +27,8 @@ var card_from_value = function(val) {
     return str;
 };
 
+var suit_map = ['D','C','H','S'];
+
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
     model = model || [];
@@ -39,6 +41,12 @@ module.exports = function(element, model) {
 
     var selected_value;
     var selected_suit;
+
+    var get_random_card = function() {
+        var value = Math.round(Math.random() * (14 - 2) + 2);
+        var suit = Math.round(Math.random() * 3);
+        return new card(card_from_value(value) + suit_map[suit]);
+    };
 
     var value_click_handler = function(value_el, val) {
 	return function(event) {
@@ -77,7 +85,7 @@ module.exports = function(element, model) {
 	value_el.on('click', value_click_handler(value_el, val));
     }
 
-    ['D','C','H','S'].forEach(function(suit) {
+    suit_map.forEach(function(suit) {
 	var suit_el = $("<div>" + suit + "</div>");
 	suits_el.append(suit_el);
 	// TODO: teardown
@@ -101,6 +109,16 @@ module.exports = function(element, model) {
     // TODO: teardown
     clear_cards_el.on('click', function(event) {
         model.splice(0, model.length);
+        update_displayed_cards();
+    });
+
+    var random_el = element.find('.random');
+    // TODO: teardown
+    random_el.on('click', function(event) {
+        model.splice(0, model.length);
+        for (var i = 0; i < 3; i++) {
+            model[i] = get_random_card();
+        }
         update_displayed_cards();
     });
 

@@ -30,3 +30,24 @@ body {
     transform: translateX(-50%);
     max-width: 530px;
 }
+
+.button {
+    width: @padding*4;
+    margin-right: @row-padding;
+    display: inline-block;
+    background-color: @dark-highlight;
+    border-radius: @border-radius;
+    text-align: center;
+    cursor: pointer;
+    text-transform: capitalize;
+
+    &:hover {
+	background-color: @hover-highlight;
+    }
+    &.showing {
+	background-color: @light-highlight;
+	&:hover {
+	    background-color: @hover-highlight;
+	}
+    }
+}

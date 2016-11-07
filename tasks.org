@@ -17,9 +17,9 @@
 *** TODO the same card may be put on the board twice
 *** TODO when adding a card multiple ranks can be highlighted
 * TODO Features
-** DONE Clear Button for Range
-** TODO Random Button for Board, fills in three random board cards ****
-** TODO Clear Button for Board
+** DONE Clear Button for Board
+** DONE Random Button for Board, fills in three random board cards
+** TODO Clear Button for Range ***
 ** TODO Combination counter for ranges shows number of pairs in range
 * TODO Design Ideas
 ** Show board cards as card pictures instead of text
