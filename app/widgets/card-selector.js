@@ -110,6 +110,7 @@ module.exports = function(element, model) {
     clear_cards_el.on('click', function(event) {
         model.splice(0, model.length);
         update_displayed_cards();
+        emitter.emit('changed');
     });
 
     var random_el = element.find('.random');
@@ -120,6 +121,7 @@ module.exports = function(element, model) {
             model[i] = get_random_card();
         }
         update_displayed_cards();
+        emitter.emit('changed');
     });
 
     return emitter;
