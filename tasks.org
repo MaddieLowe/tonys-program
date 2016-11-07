@@ -11,14 +11,14 @@
    Maddie says: done for now, re-open if more examples arise
 ** DONE Range: QQ, Board: Qs2s3d error thrown in wheel function
 * TODO User Expericence Improvments
-** TODO Change order of hand strength output (highest strength first) *****
+** DONE Change order of hand strength output (highest strength first)
 ** TODO Drag functionality
 ** TODO User input cleansing
 *** TODO the same card may be put on the board twice
 *** TODO when adding a card multiple ranks can be highlighted
 * TODO Features
+** DONE Clear Button for Range
 ** TODO Random Button for Board, fills in three random board cards ****
-** TODO Clear Button for Range ***
 ** TODO Clear Button for Board
 ** TODO Combination counter for ranges shows number of pairs in range
 * TODO Design Ideas

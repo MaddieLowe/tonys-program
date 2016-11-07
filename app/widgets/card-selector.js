@@ -97,5 +97,12 @@ module.exports = function(element, model) {
 	values_el.addClass('selected');
     });
 
+    var clear_cards_el = element.find('.clear-cards');
+    // TODO: teardown
+    clear_cards_el.on('click', function(event) {
+        model.splice(0, model.length);
+        update_displayed_cards();
+    });
+
     return emitter;
 };
