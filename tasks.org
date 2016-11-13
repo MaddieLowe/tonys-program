@@ -10,6 +10,7 @@
    Ex: Range:AKo on 3h3cTs gives 12 middle pair combos (should be 0)
    Maddie says: done for now, re-open if more examples arise
 ** DONE Range: QQ, Board: Qs2s3d error thrown in wheel function
+** Random button can create two of the same card
 * TODO User Expericence Improvments
 ** DONE Change order of hand strength output (highest strength first)
 ** TODO Drag functionality
@@ -20,7 +21,7 @@
 ** DONE Clear Button for Board
 ** DONE Random Button for Board, fills in three random board cards
 ** TODO Clear Button for Range ***
-** TODO Combination counter for ranges shows number of pairs in range
+** TODO Combination counter for ranges shows number of pairs in range ***
 * TODO Design Ideas
 ** Show board cards as card pictures instead of text
-Maddie says: yes, I think that would look great
+   Maddie says: yes, I think that would look great
