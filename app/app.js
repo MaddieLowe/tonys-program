@@ -21,19 +21,20 @@ $(document).ready(function() {
                 final_range.push(selected_range[i]);
             }
         }
-        var message = "Selected cards:";
-        for (var i = 0; i < final_range.length; i++) {
-            message += " " + final_range[i].name;
-        }
-        console.error(message);
+        // var message = "Selected cards:";
+        // for (var i = 0; i < final_range.length; i++) {
+        //     message += " " + final_range[i].name;
+        // }
+        // console.error(message);
 
         var output = "";
+        output +="<div>Combinations in range: " + final_range.length + "</div><div>&nbsp;</div>";
         if (selected_cards.length >= 3) {
             var combos = rank_hands.rank_table(final_range, selected_cards);
             rank_filter(combos, function(type, value) {
             // for (var type in combos) {
                 output += "<div>" + type + ": " + value + "</div>";
-                console.error(type + ": " + value);
+                // console.error(type + ": " + value);
             });
         }
         var output_div = $('.output');
