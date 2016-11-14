@@ -53,7 +53,7 @@ module.exports = function(element, model) {
 	var suit_selector_emitter = range_selector(suit_selector_element, suit_selector_model);
 	suit_selector_emitter.on('changed', update_model);
 
-	var suit_selector_title = element.find('.item-selector:contains("' + suit_selector_type + '")');
+	var suit_selector_title = element.find('.button:contains("' + suit_selector_type + '")');
 	var suit_selector_section = element.find('.section.' + suit_selector_type);
 	// TODO: teardown
 	suit_selector_title.on('click', function() {
