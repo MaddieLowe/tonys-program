@@ -21,7 +21,7 @@
 ** DONE Clear Button for Board
 ** DONE Random Button for Board, fills in three random board cards
 ** DONE Combination counter for ranges shows number of pairs in range
-** TODO Clear Button for Range ***
+** DONE Clear Button for Range
 ** TODO Look into different technologies for converting to an app
 * TODO Design Ideas
 ** Show board cards as card pictures instead of text

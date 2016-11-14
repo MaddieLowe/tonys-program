@@ -1,6 +1,7 @@
 @row-padding: 2px;
 
 range {
+    position: relative;
     display: inline-block;
     padding: @row-padding*2;
     background: @dark-highlight;
@@ -65,6 +66,12 @@ range {
             pointer-events: none;
 	    color: @font-color-disabled;
         }
+    }
+
+    .clear-range {
+        position: absolute;
+        top: 0;
+        right: -25px;
     }
 }
 

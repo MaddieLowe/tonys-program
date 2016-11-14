@@ -41,5 +41,20 @@ module.exports = function(element, model) {
         element.append(row);
     }
 
+    // Add a clear button. If we have any more elements to add that don't need to be
+    // added dynamically, this should probably be moved to a separate file
+    element.append('<div class="clear-range">X</div>');
+    var clear_el = element.find(".clear-range");
+    // TODO: teardown
+    clear_el.on('click', function() {
+        for (var i = 0; i < model.length; i++) {
+            for (var j = 0; j < model[i].length; j++) {
+                model[i][j].selected = false;
+            }
+        }
+        element.find('.column.selected').removeClass('selected');
+        emitter.emit('changed');
+    });
+
     return emitter;
 };
