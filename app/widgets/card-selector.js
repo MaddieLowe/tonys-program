@@ -42,10 +42,28 @@ module.exports = function(element, model) {
     var selected_value;
     var selected_suit;
 
-    var get_random_card = function() {
-        var value = Math.round(Math.random() * (14 - 2) + 2);
-        var suit = Math.round(Math.random() * 3);
-        return new card(card_from_value(value) + suit_map[suit]);
+    var get_random_card = function(invalid_cards) {
+        var value;
+        var suit;
+
+        var card_matches = function(c) {
+            return c.value === value & c.suit === suit;
+        };
+
+        var count = 0;
+        do {
+            if (count !== 0) {
+                console.error("re-getting card because we already have " + value + suit);
+            }
+            count++;
+
+            var v = Math.round(Math.random() * (14 - 2) + 2);
+            var s = Math.round(Math.random() * 3);
+            value = card_from_value(v);
+            suit = suit_map[s];
+        } while (invalid_cards.find(card_matches))
+
+        return new card(value + suit);
     };
 
     var value_click_handler = function(value_el, val) {
@@ -118,7 +136,7 @@ module.exports = function(element, model) {
     random_el.on('click', function(event) {
         model.splice(0, model.length);
         for (var i = 0; i < 3; i++) {
-            model[i] = get_random_card();
+            model[i] = get_random_card(model);
         }
         update_displayed_cards();
         emitter.emit('changed');
