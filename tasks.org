@@ -36,3 +36,13 @@ sets up a board and hand
 configurable
 pick position
 
+First situation:
+Continuation betting in position against the big blind
+In position means button, cutoff, middle, under the gun
+Board: random boards are fine, or it would be nice if he
+could select one or two cards and it would fill in the others
+Hand: depends on the position.
+Maybe make a tool to export positions from range so they can be
+read in from text.
+Pot: $2.75
+
