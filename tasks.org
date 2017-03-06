@@ -1,3 +1,4 @@
+#+Title: Poker App Tasks
 
 * DONE Make selected cards deletable
 * DONE Remove selected cards from output of range
@@ -25,3 +26,13 @@
 ** TODO User input cleansing
 *** TODO the same card may be put on the board twice
 *** TODO when adding a card multiple ranks can be highlighted
+
+#+Title: Situation Drills
+
+* Notes:
+Situation type selector
+Accepts input on what he decides
+sets up a board and hand
+configurable
+pick position
+
