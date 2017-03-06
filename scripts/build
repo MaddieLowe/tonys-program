@@ -6,4 +6,5 @@ js_output_file='./index.js';
 echo 'Browserifying'
 node_modules/browserify/bin/cmd.js ${js_input_file} -o ${js_output_file} -t brfs --debug
 
-scripts/build-view
+scripts/build-ejs "range-analysis"
+scripts/build-less

@@ -1,27 +1,7 @@
 #!/usr/bin/env node
 
-var ejs = require('ejs');
 var fs = require('fs');
-var async = require('async');
 var less = require('less');
-
-var html_output_path = __dirname + '/../index.html';
-var ejs_options = { filename: 'index.html' };
-var ejs_input_path = __dirname + '/../views/index.ejs';
-function ejs_to_html(cb) {
-    console.log('Compiling ejs');
-    fs.readFile(ejs_input_path, 'utf8', function(err, data) {
-        if (err) cb(err);
-
-        var template = ejs.compile(data, ejs_options);
-        var html = template();
-
-        fs.writeFile(html_output_path, html, function(err) {
-            if (err) cb(err);
-            cb();
-        });
-    });
-}
 
 var less_input_path = __dirname + '/../less/main.less';
 var css_output_path = __dirname + '/../index.css';
@@ -41,10 +21,7 @@ function less_to_css(cb) {
     });
 }
 
-async.series([
-    ejs_to_html,
-    less_to_css
-], function(err, results) {
+less_to_css(function(err, results) {
     if (err) {
         console.error(err);
         process.exit(1);

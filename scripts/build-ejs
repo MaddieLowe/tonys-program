@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+
+var ejs = require('ejs');
+var fs = require('fs');
+
+var node = process.argv.shift();
+var name = process.argv.shift();
+var view_name = process.argv.shift();
+
+var html_output_path = __dirname + '/../' + view_name + '.html';
+var ejs_options = { filename: view_name + '.html' };
+var ejs_input_path = __dirname + '/../views/' + view_name + '.ejs';
+function ejs_to_html(cb) {
+    console.log('Compiling ejs');
+    fs.readFile(ejs_input_path, 'utf8', function(err, data) {
+        if (err) cb(err);
+
+        var template = ejs.compile(data, ejs_options);
+        var html = template();
+
+        fs.writeFile(html_output_path, html, function(err) {
+            if (err) cb(err);
+            cb();
+        });
+    });
+}
+
+ejs_to_html(function(err, results) {
+    if (err) {
+        console.error(err);
+        process.exit(1);
+    }
+    console.log('Done');
+    process.exit(0);
+});

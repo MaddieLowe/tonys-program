@@ -1,41 +1,39 @@
-#+Title: Range Analysis
+#+Title: Poker App Tasks
 
-* DONE Make selected cards deletable
-* DONE Remove selected cards from output of range
-* DONE Put in algorithm. Display:
-** DONE Text output of each hand strength (how many of them can be made with the range and the board)
-* DONE Bugs
-** DONE Overcards: pocket pairs should not be overcards
-   EX:AA on a K65 boardshould not be count as overcards
-** DONE Paired boards give funny readouts with errors
-   Ex: Range:AKo on 3h3cTs gives 12 middle pair combos (should be 0)
-   Maddie says: done for now, re-open if more examples arise
-** DONE Range: QQ, Board: Qs2s3d error thrown in wheel function
-** DONE Random button can create two of the same card
-* DONE Design Ideas
-** DONE Show board cards as card pictures instead of text
-* TODO Features
-** DONE Clear Button for Board
-** DONE Random Button for Board, fills in three random board cards
-** DONE Combination counter for ranges shows number of pairs in range
-** DONE Clear Button for Range
-** TODO Look into different technologies for converting to an app
-* TODO User Expericence Improvments
-** DONE Change order of hand strength output (highest strength first)
-** TODO Drag functionality
-** TODO User input cleansing
-*** TODO the same card may be put on the board twice
-*** TODO when adding a card multiple ranks can be highlighted
-
-#+Title: Situation Drills
-
-* TODO Continuation betting
-** TODO Create a new "app"
-*** TODO Change name of files for other app
-*** TODO Add flags to the build script to build one app or both
-** TODO Create a config file for the continuation betting situation
-** TODO Create a module that reads the file and sets up a situation
-** TODO Find a way to "save" that situation once it is completed
+* Range Analysis
+** DONE Make selected cards deletable
+** DONE Remove selected cards from output of range
+** DONE Put in algorithm. Display:
+*** DONE Text output of each hand strength (how many of them can be made with the range and the board)
+** DONE Bugs
+*** DONE Overcards: pocket pairs should not be overcards
+    EX:AA on a K65 boardshould not be count as overcards
+*** DONE Paired boards give funny readouts with errors
+    Ex: Range:AKo on 3h3cTs gives 12 middle pair combos (should be 0)
+    Maddie says: done for now, re-open if more examples arise
+*** DONE Range: QQ, Board: Qs2s3d error thrown in wheel function
+*** DONE Random button can create two of the same card
+** DONE Design Ideas
+*** DONE Show board cards as card pictures instead of text
+** TODO Features
+*** DONE Clear Button for Board
+*** DONE Random Button for Board, fills in three random board cards
+*** DONE Combination counter for ranges shows number of pairs in range
+*** DONE Clear Button for Range
+*** TODO Look into different technologies for converting to an app
+** TODO User Expericence Improvments
+*** DONE Change order of hand strength output (highest strength first)
+*** DONE Drag functionality
+*** TODO User input cleansing
+**** TODO the same card may be put on the board twice
+**** TODO when adding a card multiple ranks can be highlighted
+* Situation Drills
+** TODO Continuation betting
+*** DONE Create a new "app"
+**** DONE Change name of files for other app
+*** TODO Create a config file for the continuation betting situation
+*** TODO Create a module that reads the file and sets up a situation
+*** TODO Find a way to "save" that situation once it is completed
 * Notes:
 Situation type selector
 Accepts input on what he decides

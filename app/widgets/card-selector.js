@@ -54,7 +54,7 @@ module.exports = function(element, model) {
         var count = 0;
         do {
             if (count !== 0) {
-                console.error("re-getting card because we already have " + value + suit);
+                console.log("Re-getting card because we already have " + value + suit);
             }
             count++;
 
