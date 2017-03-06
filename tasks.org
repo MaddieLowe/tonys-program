@@ -1,4 +1,4 @@
-#+Title: Poker App Tasks
+#+Title: Range Analysis
 
 * DONE Make selected cards deletable
 * DONE Remove selected cards from output of range
@@ -29,6 +29,13 @@
 
 #+Title: Situation Drills
 
+* TODO Continuation betting
+** TODO Create a new "app"
+*** TODO Change name of files for other app
+*** TODO Add flags to the build script to build one app or both
+** TODO Create a config file for the continuation betting situation
+** TODO Create a module that reads the file and sets up a situation
+** TODO Find a way to "save" that situation once it is completed
 * Notes:
 Situation type selector
 Accepts input on what he decides
@@ -46,3 +53,5 @@ Maybe make a tool to export positions from range so they can be
 read in from text.
 Pot: $2.75
 
+Will eventually need a way to start a "session" and keep track
+of number of hands completed, and a way to export them to text files.

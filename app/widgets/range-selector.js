@@ -2,6 +2,14 @@ var EventEmitter = require('events');
 
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
+    var dragging = false;
+
+    var select_handler = function(column, item) {
+        return function(event) {
+            column.addClass('selected');
+            item.selected = true;
+        };
+    };
 
     var click_handler = function(column, item) {
         return function(event) {
@@ -34,12 +42,27 @@ module.exports = function(element, model) {
             }
 
             // TODO: teardown
-            column.on('click', click_handler(column, row_range[j]));
+            let select = select_handler(column, row_range[j]);
+            column.on('mouseover', function(evt) {
+                if (dragging) {
+                    select(evt);
+                }
+            });
+            column.on('mousedown', click_handler(column, row_range[j]));
 
             row.append(column);
         }
         element.append(row);
     }
+
+    // TODO: teardown
+    element.on('mousedown', function() {
+        dragging = true;
+    });
+    element.on('mouseup mouseleave', function() {
+        dragging = false;
+        emitter.emit('changed');
+    });
 
     // Add a clear button. If we have any more elements to add that don't need to be
     // added dynamically, this should probably be moved to a separate file
