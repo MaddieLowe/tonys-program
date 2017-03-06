@@ -19,4 +19,27 @@ describe('card', function() {
         c4.value.should.eql(10);
         c4.suit.should.eql('C');
     });
+
+    it('value_to_string should return the right string', function() {
+        var c = new card("AH");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("3D");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("TH");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("JS");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("QC");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("KH");
+        c.value_to_string().should.eql(c.name[0]);
+
+        c = new card("9H");
+        c.value_to_string().should.eql(c.name[0]);
+    });
 });

@@ -3,7 +3,7 @@
 * DONE Remove selected cards from output of range
 * DONE Put in algorithm. Display:
 ** DONE Text output of each hand strength (how many of them can be made with the range and the board)
-* Bugs
+* DONE Bugs
 ** DONE Overcards: pocket pairs should not be overcards
    EX:AA on a K65 boardshould not be count as overcards
 ** DONE Paired boards give funny readouts with errors
@@ -11,18 +11,17 @@
    Maddie says: done for now, re-open if more examples arise
 ** DONE Range: QQ, Board: Qs2s3d error thrown in wheel function
 ** DONE Random button can create two of the same card
-* TODO User Expericence Improvments
-** DONE Change order of hand strength output (highest strength first)
-** TODO Drag functionality
-** TODO User input cleansing
-*** TODO the same card may be put on the board twice
-*** TODO when adding a card multiple ranks can be highlighted
+* DONE Design Ideas
+** DONE Show board cards as card pictures instead of text
 * TODO Features
 ** DONE Clear Button for Board
 ** DONE Random Button for Board, fills in three random board cards
 ** DONE Combination counter for ranges shows number of pairs in range
 ** DONE Clear Button for Range
 ** TODO Look into different technologies for converting to an app
-* TODO Design Ideas
-** Show board cards as card pictures instead of text
-   Maddie says: yes, I think that would look great
+* TODO User Expericence Improvments
+** DONE Change order of hand strength output (highest strength first)
+** TODO Drag functionality
+** TODO User input cleansing
+*** TODO the same card may be put on the board twice
+*** TODO when adding a card multiple ranks can be highlighted

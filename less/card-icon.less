@@ -1,0 +1,33 @@
+@card-icon-width: 44px;
+@card-icon-border-width: 4px;
+@card-background-color: @light-highlight;
+
+.card-icon {
+    width: @card-icon-width;
+    height: @card-icon-width;
+    background-size: 100% 100%;
+    text-align: center;
+    color: white;
+    line-height: @card-icon-width - (@card-icon-border-width*2);
+    border-radius: 6px;
+    background-color: @card-background-color;
+    border: @card-icon-border-width solid @card-background-color;
+
+    &:hover {
+        background-color: white;
+        border-color: white;
+    }
+
+    &.S {
+        background-image: url("public/icons/spade.png")
+    }
+    &.C {
+        background-image: url("public/icons/club.png")
+    }
+    &.D {
+        background-image: url("public/icons/diamond.png")
+    }
+    &.H {
+        background-image: url("public/icons/heart.png")
+    }
+}

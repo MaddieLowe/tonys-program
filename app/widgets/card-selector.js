@@ -1,6 +1,7 @@
 var EventEmitter = require('events');
 var fs = require('fs');
 var card = require('../lib/card');
+var card_icon = require('./card-icon');
 
 var card_from_value = function(val) {
     var str;
@@ -87,7 +88,8 @@ module.exports = function(element, model) {
         card_display.empty();
         model.forEach(function(card) {
             var delete_button = $("<span class='delete-card'>x</span>");
-            var new_card = $("<div>" + card.name + "</div>");
+            var new_card = $('<div></div>');
+            card_icon(new_card, card);
             new_card.append(delete_button);
             card_display.append(new_card);
             // TODO: teardown

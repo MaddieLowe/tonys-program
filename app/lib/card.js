@@ -26,4 +26,29 @@ function card(name) {
     this.type = "card";
 }
 
+card.prototype.value_to_string = function() {
+    var ret;
+    switch(this.value) {
+        case 14:
+        ret = "A";
+        break;
+        case 10:
+        ret = "T";
+        break;
+        case 11:
+        ret = "J";
+        break;
+        case 12:
+        ret = "Q";
+        break;
+        case 13:
+        ret = "K";
+        break;
+        default:
+        ret = "" + this.value;
+    }
+
+    return ret;
+};
+
 module.exports = card;
