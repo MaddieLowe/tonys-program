@@ -1,3 +1,3 @@
 module.exports = {
-    continuous_betting: require('./continuous-betting')
+    continuation_betting: require('./continuation-betting')
 };
