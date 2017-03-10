@@ -2,33 +2,9 @@ var EventEmitter = require('events');
 var fs = require('fs');
 var card = require('../lib/card');
 var card_icon = require('./card-icon');
-
-var card_from_value = function(val) {
-    var str;
-    switch(val) {
-    case 10:
-	str = "T";
-	break;
-    case 11:
-	str = "J";
-	break;
-    case 12:
-	str = "Q";
-	break;
-    case 13:
-	str = "K";
-	break;
-    case 14:
-	str = "A";
-	break;
-    default:
-	str = val;
-    };
-
-    return str;
-};
-
-var suit_map = ['D','C','H','S'];
+var suit_map = require('../lib/card-utils').suit_map;
+var card_from_value = require('../lib/card-utils').card_from_value;
+var get_random_card = require('../lib/card-utils').get_random_card;
 
 module.exports = function(element, model) {
     var emitter = new EventEmitter();
@@ -43,29 +19,6 @@ module.exports = function(element, model) {
     var selected_value;
     var selected_suit;
 
-    var get_random_card = function(invalid_cards) {
-        var value;
-        var suit;
-
-        var card_matches = function(c) {
-            return c.value === value & c.suit === suit;
-        };
-
-        var count = 0;
-        do {
-            if (count !== 0) {
-                console.log("Re-getting card because we already have " + value + suit);
-            }
-            count++;
-
-            var v = Math.round(Math.random() * (14 - 2) + 2);
-            var s = Math.round(Math.random() * 3);
-            value = card_from_value(v);
-            suit = suit_map[s];
-        } while (invalid_cards.find(card_matches))
-
-        return new card(value + suit);
-    };
 
     var value_click_handler = function(value_el, val) {
 	return function(event) {

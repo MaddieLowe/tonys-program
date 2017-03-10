@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 name=$1
-# options are range-analysis and situation drills
+# options are range-analysis and situation-drills
 
 js_input_file='./app/'"${name}"'.js';
 js_output_file='./'"${name}"'.js';
