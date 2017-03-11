@@ -73,5 +73,19 @@ module.exports = function(element, model) {
 
     base_range_selector_emitter.on('changed', update_model);
 
+    var export_el = element.find('.button:contains("Export")');
+    var download_el = document.createElement('a');
+    document.body.appendChild(download_el);
+    download_el.style = "display: none";
+    // TODO: teardown
+    export_el.on('click', function() {
+        var data = new Blob([JSON.stringify(model)], {type: 'text/plain'});
+        var text_file = window.URL.createObjectURL(data);
+        download_el.href = text_file;
+        download_el.download = "export.txt";
+        download_el.click();
+        window.URL.revokeObjectURL(text_file);
+    });
+
     return emitter;
 };

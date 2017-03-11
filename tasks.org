@@ -33,7 +33,7 @@
 **** DONE Change name of files for other app
 *** DONE Create a config file for the continuation betting situation
 *** DONE Create a module that reads the file and sets up a situation
-*** TODO Add button to output range as text
+*** DONE Add button to output range as text
 *** TODO Make config file actually right
 *** TODO Make display nicer
 *** TODO Find a way to "save" that situation once it is completed
