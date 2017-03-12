@@ -7,6 +7,7 @@ function situation(config) {
     this.position = config.position;
     this.positions = config.positions;
     this.pot = config.pot;
+    this.amount = Number(0).toFixed(2);
 
     if (config.hand_range) {
         this.hand_range = pairs_array_to_card_array(JSON.parse(config.hand_range));
@@ -22,5 +23,9 @@ function situation(config) {
         this.hand[i] = get_random_card(this.board.concat(this.hand), this.hand_range);
     }
 }
+
+situation.prototype.set_bet_amount = function(amount) {
+    this.amount = Number(amount).toFixed(2);
+};
 
 module.exports = situation;

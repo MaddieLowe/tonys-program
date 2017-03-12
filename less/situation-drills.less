@@ -4,6 +4,24 @@ situation-display {
         margin: 5px;
         pointer-events: none;
     }
+
+    .pot {
+        &::before {
+            content: '$';
+        }
+    }
+
+    .bet {
+        margin: 5px;
+
+        input {
+            text-align: right;
+            width: 60px;
+            margin-right: 5px;
+            position: relative;
+            top: -1px;
+        }
+    }
 }
 
 .section {

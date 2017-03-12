@@ -40,10 +40,11 @@
 **** DONE Make drop-down widget
 ***** DONE Select random position by default
 ***** DONE Update situation and display when position changed
-**** TODO Make pot entry widget
+**** DONE Make pot entry widget
 **** TODO Make action options
 *** TODO Find a way to "save" that situation once it is completed
 *** TODO Export ability
+*** TODO Do pot input validation
 *** TODO Write tests for card-utils
 *** TODO Write tests for situation
 * Notes:
