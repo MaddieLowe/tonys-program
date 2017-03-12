@@ -77,3 +77,8 @@ module.exports.pairs_array_to_card_array = function(pairs_array) {
     }
     return cards;
 };
+
+module.exports.get_random_position = function(positions) {
+    var i = Math.round(Math.random() * ((positions.length - 1) - 0) + 0);
+    return positions[i];
+};

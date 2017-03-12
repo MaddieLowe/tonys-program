@@ -4,19 +4,35 @@ situation-display {
         margin: 5px;
         pointer-events: none;
     }
+}
 
-    .section {
-        margin-bottom: 10px;
-    }
+.section {
+    margin-bottom: 10px;
+}
 
-    .label {
-        display: inline-block;
-        font-weight: bold;
-    }
+.label {
+    display: inline-block;
+    font-weight: bold;
+}
 
-    .item {
-        display: inline-block;
+.item {
+    display: inline-block;
+    position: absolute;
+    left: 85px;
+}
+
+.header {
+    padding-bottom: 30px;
+    margin-bottom: 15px;
+    position: relative;
+
+    &::after {
+        content: "\00A0";
         position: absolute;
-        left: 85px;
+        left: 0;
+        bottom: 0;
+        height: 1px;
+        border-bottom: 1px solid @dark-highlight;
+        width: 100%;
     }
 }

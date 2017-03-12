@@ -1,0 +1,42 @@
+drop-down-menu {
+    cursor: pointer;
+    width: 215px;
+    height: 30px;
+    background-color: @dark-highlight;
+    color: white;
+
+    .selected {
+        padding: 5px;
+
+        &::after {
+            content: "\25BC";
+            position: absolute;
+            right: 5px;
+        }
+    }
+
+    .menu {
+        opacity: 0;
+        position: absolute;
+        background-color: @dark-highlight;
+        z-index: 1;
+        width: 100%;
+    }
+
+    &:hover {
+        .menu {
+            opacity: 1;
+        }
+        .selected {
+            background-color: @middle-color;
+        }
+    }
+
+    .menu-item {
+        padding: 5px;
+
+        &:hover {
+            background-color: @middle-color;
+        }
+    }
+}
