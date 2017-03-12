@@ -1,5 +1,22 @@
 situation-display {
     .board > *, .hand > * {
         display: inline-block;
+        margin: 5px;
+        pointer-events: none;
+    }
+
+    .section {
+        margin-bottom: 10px;
+    }
+
+    .label {
+        display: inline-block;
+        font-weight: bold;
+    }
+
+    .item {
+        display: inline-block;
+        position: absolute;
+        left: 85px;
     }
 }

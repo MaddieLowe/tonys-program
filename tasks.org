@@ -36,13 +36,31 @@
 *** DONE Add button to output range as text
 *** TODO Make config file actually right
 *** TODO Make display nicer
+**** DONE Make situation display nicer
+**** TODO Make drop-down widget
+**** TODO Make pot entry widget
+**** TODO Make action options
 *** TODO Find a way to "save" that situation once it is completed
+*** TODO Export ability
+*** TODO Write tests for card-utils
+*** TODO Write tests for situation
 * Notes:
+
 Situation type selector
 Accepts input on what he decides
 sets up a board and hand
 configurable
 pick position
+
+Positions: [
+  Random,
+  BU,
+  SB,
+  BB,
+  UG,
+  MP,
+  CO
+]
 
 First situation:
 Continuation betting in position against the big blind
