@@ -34,14 +34,14 @@
 *** DONE Create a config file for the continuation betting situation
 *** DONE Create a module that reads the file and sets up a situation
 *** DONE Add button to output range as text
-*** TODO Make config file actually right
-*** TODO Make display nicer
+*** DONE Make display nicer
 **** DONE Make situation display nicer
 **** DONE Make drop-down widget
 ***** DONE Select random position by default
 ***** DONE Update situation and display when position changed
 **** DONE Make pot entry widget
-**** TODO Make action options
+**** DONE Make action options
+*** TODO Make config file actually right
 *** TODO Find a way to "save" that situation once it is completed
 *** TODO Export ability
 *** TODO Do pot input validation

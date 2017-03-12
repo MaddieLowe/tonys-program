@@ -28,4 +28,8 @@ situation.prototype.set_bet_amount = function(amount) {
     this.amount = Number(amount).toFixed(2);
 };
 
+situation.prototype.set_action = function(action) {
+    this.action = action;
+};
+
 module.exports = situation;

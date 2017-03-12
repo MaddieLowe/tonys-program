@@ -33,15 +33,15 @@ module.exports = function(element, model) {
     var bet_input_el = element.find('.bet input');
     var pots = {
         quarter: {
-            el: element.find('.bet .button.quarter'),
+            el: element.find('.button.quarter'),
             scale: 0.25
         },
         half: {
-            el: element.find('.bet .button.half'),
+            el: element.find('.button.half'),
             scale: 0.5
         },
         whole: {
-            el: element.find('.bet .button.whole'),
+            el: element.find('.button.whole'),
             scale: 1
         }
     };
@@ -64,6 +64,16 @@ module.exports = function(element, model) {
         model.set_bet_amount(bet_input_el.val());
         update_bet_display();
         emitter.emit('change');
+    });
+
+    ['bets','checks','folds'].forEach(function(action) {
+        let action_el = element.find('.button.' + action);
+        action_el.on('click', function() {
+            model.set_action(action);
+            element.find('.button').removeClass('selected');
+            action_el.addClass('selected');
+            emitter.emit('change');
+        });
     });
 
     return emitter;
