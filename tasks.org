@@ -41,13 +41,21 @@
 ***** DONE Update situation and display when position changed
 **** DONE Make pot entry widget
 **** DONE Make action options
-*** TODO Make config file actually right
-*** TODO Find a way to "save" that situation once it is completed
+*** DONE Make config file actually right
+*** DONE "Start" a session and save session in memory until page is refreshed
+*** TODO Multiple situations
 *** TODO Export ability
 *** TODO Do pot input validation
 *** TODO Write tests for card-utils
 *** TODO Write tests for situation
 * Notes:
+
+Things that might change:
+position is variable in every situation
+range of hands per position
+pot size
+options could be raises, calls, or folds
+"raises $3.00 to $5.75"
 
 Situation type selector
 Accepts input on what he decides

@@ -15,6 +15,7 @@ situation-display {
         margin: 5px;
 
         input {
+            padding: 0 5px;
             text-align: right;
             width: 180px;
             margin-right: 5px;
@@ -30,6 +31,7 @@ situation-display {
 
 .section {
     margin-bottom: 10px;
+    position: relative;
 }
 
 .label {
@@ -57,4 +59,29 @@ situation-display {
         border-bottom: 1px solid @dark-highlight;
         width: 100%;
     }
+}
+
+.new-session, .download {
+    width: 90px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 25px;
+    line-height: 25px;
+}
+
+.new-session, .save {
+    background-color: @button-green;
+}
+
+.save {
+    width: 90px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 25px;
+    line-height: 25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }

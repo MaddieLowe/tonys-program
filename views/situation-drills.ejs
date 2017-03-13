@@ -3,11 +3,24 @@
   <% include views/situation-drills-header.ejs %>
   <body>
     <div class="app-content">
+      <div class="section">
+        <div class="label">Situation</div>
+        <drop-down-menu class="item situation"></drop-down-menu>
+        <div class="button new-session">New Session</div>
+      </div>
       <div class="section header">
+        <div class="label">Completed</div>
+        <div class="item hands-completed"></div>
+        <div class="button download">Download</div>
+      </div>
+      <div class="section">
         <div class="label">Position</div>
-        <drop-down-menu class="item"></drop-down-menu>
+        <drop-down-menu class="item position"></drop-down-menu>
       </div>
       <situation-display></situation-display>
+      <div class="section">
+        <div class="button save">Save</div>
+      </div>
     </div>
   </body>
 </html>

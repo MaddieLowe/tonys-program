@@ -1,8 +1,0 @@
-module.exports = {
-    type: "Continuation Betting vs Big Blind",
-    position: 'BU',
-    positions: ['BU','UG','MP','CO'],
-    pot: 2.75,
-    // This is not right yet
-    hand_range: '[{"card1":{"name":"AD","value":14,"suit":"D","type":"card"},"card2":{"name":"AC","value":14,"suit":"C","type":"card"},"name":"ADAC","type":"pair"},{"card1":{"name":"AH","value":14,"suit":"H","type":"card"},"card2":{"name":"AD","value":14,"suit":"D","type":"card"},"name":"AHAD","type":"pair"},{"card1":{"name":"AS","value":14,"suit":"S","type":"card"},"card2":{"name":"AD","value":14,"suit":"D","type":"card"},"name":"ASAD","type":"pair"},{"card1":{"name":"AH","value":14,"suit":"H","type":"card"},"card2":{"name":"AC","value":14,"suit":"C","type":"card"},"name":"AHAC","type":"pair"},{"card1":{"name":"AS","value":14,"suit":"S","type":"card"},"card2":{"name":"AC","value":14,"suit":"C","type":"card"},"name":"ASAC","type":"pair"},{"card1":{"name":"AS","value":14,"suit":"S","type":"card"},"card2":{"name":"AH","value":14,"suit":"H","type":"card"},"name":"ASAH","type":"pair"},{"card1":{"name":"AD","value":14,"suit":"D","type":"card"},"card2":{"name":"KD","value":13,"suit":"D","type":"card"},"name":"ADKD","type":"pair"},{"card1":{"name":"AC","value":14,"suit":"C","type":"card"},"card2":{"name":"KC","value":13,"suit":"C","type":"card"},"name":"ACKC","type":"pair"},{"card1":{"name":"AH","value":14,"suit":"H","type":"card"},"card2":{"name":"KH","value":13,"suit":"H","type":"card"},"name":"AHKH","type":"pair"},{"card1":{"name":"AS","value":14,"suit":"S","type":"card"},"card2":{"name":"KS","value":13,"suit":"S","type":"card"},"name":"ASKS","type":"pair"}]'
-};

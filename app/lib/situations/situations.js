@@ -1,3 +1,5 @@
+var fs = require('fs');
+
 module.exports = {
-    continuation_betting: require('./continuation-betting')
+    "Continuation Betting vs Big Blind": require('./continuation-betting-vs-bb')
 };

@@ -44,7 +44,6 @@ module.exports.get_random_card = function(invalid_cards, valid_cards) {
 
     var get_card_from_range = function() {
         var i = Math.round(Math.random() * ((valid_cards.length - 1) - 0) + 0);
-        console.error("valid cards length is " + valid_cards.length + " i is " + i);
         value = card_from_value(valid_cards[i].value);
         suit = valid_cards[i].suit;
     };

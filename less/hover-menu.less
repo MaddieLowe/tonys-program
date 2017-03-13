@@ -1,7 +1,8 @@
 drop-down-menu {
     cursor: pointer;
-    width: 215px;
-    height: 30px;
+    width: 230px;
+    height: 25px;
+    line-height: 17px;
     background-color: @dark-highlight;
     color: white;
 
@@ -21,11 +22,13 @@ drop-down-menu {
         background-color: @dark-highlight;
         z-index: 1;
         width: 100%;
+        pointer-events: none;
     }
 
     &:hover {
         .menu {
             opacity: 1;
+            pointer-events: all;
         }
         .selected {
             background-color: @middle-color;
