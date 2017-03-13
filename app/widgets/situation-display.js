@@ -66,8 +66,11 @@ module.exports = function(element, model) {
         emitter.emit('change');
     });
 
-    ['bets','checks','folds'].forEach(function(action) {
+    var action_els = element.find('.action .button');
+    action_els.hide();
+    model.available_actions.forEach(function(action) {
         let action_el = element.find('.button.' + action);
+        action_el.show();
         action_el.on('click', function() {
             model.set_action(action);
             element.find('.button').removeClass('selected');

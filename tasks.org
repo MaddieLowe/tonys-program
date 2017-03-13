@@ -43,8 +43,11 @@
 **** DONE Make action options
 *** DONE Make config file actually right
 *** DONE "Start" a session and save session in memory until page is refreshed
-*** TODO Multiple situations
-*** TODO Export ability
+*** DONE Multiple situations
+*** DONE Export ability
+*** TODO Test string manipulation performance
+*** TODO Remove save button
+*** TODO Popup window for new session
 *** TODO Do pot input validation
 *** TODO Write tests for card-utils
 *** TODO Write tests for situation
