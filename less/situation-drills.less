@@ -70,7 +70,7 @@ situation-display {
     line-height: 25px;
 }
 
-.new-session, .save {
+.new-session, .save, .ok {
     background-color: @button-green;
 }
 
@@ -84,4 +84,27 @@ situation-display {
     line-height: 25px;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+popup {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: @dark-overlay;
+
+    .contents {
+        position: absolute;
+        padding: 15px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: @base-color;
+
+        .buttons {
+            margin-top: 15px;
+            text-align: center;
+        };
+    }
 }

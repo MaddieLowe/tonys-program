@@ -3,6 +3,7 @@ var situation = require('./lib/situation');
 var situation_display = require('./widgets/situation-display');
 var drop_down_menu = require('./widgets/drop-down-menu');
 var get_random_position = require('./lib/card-utils').get_random_position;
+var popup = require('./widgets/popup');
 
 $(document).ready(function() {
     var situation_el = $('drop-down-menu.situation');
@@ -23,6 +24,7 @@ $(document).ready(function() {
     var setup_positions_dropdown = function() {
         var positions = ['Random'].concat(current_situation.positions);
         var positions_el = $('drop-down-menu.position');
+        positions_el.children().remove();
         var positions_emitter = new drop_down_menu(positions_el, positions);
         position_random = true;
 
@@ -61,13 +63,6 @@ $(document).ready(function() {
         });
     };
 
-    var new_session_el = $('.new-session');
-    new_session_el.on('click', function() {
-        completed_hands = [];
-        get_new_situation();
-        setup_positions_dropdown();
-    });
-
     get_new_situation();
     setup_positions_dropdown();
 
@@ -87,5 +82,22 @@ $(document).ready(function() {
         a_el.download = 'session.txt';
         a_el.click();
         window.URL.revokeObjectURL(url);
+    });
+
+    var popup_el = $('popup');
+    popup_el.hide();
+    var popup_emitter = new popup(popup_el);
+    popup_emitter.on('change', function(choice) {
+        if (choice === "OK") {
+            completed_hands = [];
+            get_new_situation();
+            setup_positions_dropdown();
+        }
+        popup_el.hide();
+    });
+
+    var new_session_el = $('.new-session');
+    new_session_el.on('click', function() {
+        popup_el.show();
     });
 });

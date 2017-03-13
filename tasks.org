@@ -46,11 +46,12 @@
 *** DONE Multiple situations
 *** DONE Export ability
 *** DONE Remove save button
-*** TODO Test string manipulation performance
-*** TODO Popup window for new session
-*** TODO Do pot input validation
+*** DONE Test string manipulation performance
+*** DONE Popup window for new session
 *** TODO Write tests for card-utils
 *** TODO Write tests for situation
+*** TODO Find out if Tony wants button text color changed
+*** TODO Do pot input validation?
 * Notes:
 
 Things that might change:
