@@ -28,6 +28,7 @@ var card_from_value = module.exports.card_from_value = function(val) {
 };
 
 module.exports.get_random_card = function(invalid_cards, valid_cards) {
+    invalid_cards = invalid_cards || [];
     var value;
     var suit;
 

@@ -48,10 +48,10 @@
 *** DONE Remove save button
 *** DONE Test string manipulation performance
 *** DONE Popup window for new session
-*** TODO Write tests for card-utils
-*** TODO Write tests for situation
-*** TODO Find out if Tony wants button text color changed
-*** TODO Do pot input validation?
+*** DONE Do pot input validation? // Tony says no
+*** DONE Find out if Tony wants button text color changed
+*** DONE Write tests for card-utils
+*** TODO Create more situations
 * Notes:
 
 Things that might change:
