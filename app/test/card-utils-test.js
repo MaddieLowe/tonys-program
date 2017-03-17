@@ -1,5 +1,6 @@
 var card_utils = require('../lib/card-utils');
 var card = require('../lib/card');
+var card_pair = require('../lib/card-pair');
 var should = require('should');
 
 describe('card-utils', function() {
@@ -59,6 +60,56 @@ describe('card-utils', function() {
             var c = card_utils.get_random_card([invalid_card], [valid_card]);
             c.name.should.not.eql("6C");
             c.name.should.eql("TS");
+        });
+    });
+
+    describe('get_random_card_pair', function() {
+        var old_random = Math.random;
+        beforeEach(function() {
+            var count = 0;
+            Math.random = function() {
+                count++;
+                if (count === 1 ||
+                    count === 2) {
+                    return 0.3;
+                }
+                if (count === 3 ||
+                    count === 4){
+                    return 0.6;
+                }
+                if (count === 5 ||
+                    count === 6) {
+                    return 0.2;
+                }
+                return 0.1;
+            };
+        });
+
+        after(function() {
+            Math.random = old_random;
+        });
+
+        it ('should return a pair in the range of valid pairs', function() {
+            var range = [
+                new card_pair("AC","AS"),
+                new card_pair("TD","9H")
+            ];
+            var pair = card_utils.get_random_card_pair([], range);
+            pair.card1.name.should.eql("AS");
+            pair.card2.name.should.eql("AC");
+        });
+
+        it ('should not return a card that is in the invalid cards list', function() {
+            var range = [
+                new card_pair("AC","AS"),
+                new card_pair("TD","9H")
+            ];
+            var invalid_cards = [new card("AC")];
+            var pair = card_utils.get_random_card_pair(invalid_cards, range);
+            pair.card1.name.should.not.eql("AS");
+            pair.card2.name.should.not.eql("AC");
+            pair.card1.name.should.eql("TD");
+            pair.card2.name.should.eql("9H");
         });
     });
 });

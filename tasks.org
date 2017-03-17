@@ -51,8 +51,17 @@
 *** DONE Do pot input validation? // Tony says no
 *** DONE Find out if Tony wants button text color changed
 *** DONE Write tests for card-utils
+*** DONE Allow card pairs, not individual cards
+*** DONE Put unique card into text file as TURN
 *** TODO Create more situations
 * Notes:
+
+<HAND_ID>
+<HOLE_CARDS>
+<FLOP>
+<BET>
+<TURN>
+<BOARD>
 
 Things that might change:
 position is variable in every situation

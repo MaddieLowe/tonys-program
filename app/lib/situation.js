@@ -1,4 +1,5 @@
 var get_random_card = require('./card-utils').get_random_card;
+var get_random_card_pair = require('./card-utils').get_random_card_pair;
 var pairs_array_to_card_array = require('./card-utils').pairs_array_to_card_array;
 var get_random_position = require('./card-utils').get_random_position;
 
@@ -14,7 +15,7 @@ function situation(config) {
     if (config.hand_range) {
         this.hand_ranges_by_position = {};
         for (var pos in config.hand_range) {
-            this.hand_ranges_by_position[pos] = pairs_array_to_card_array(JSON.parse(config.hand_range[pos]));
+            this.hand_ranges_by_position[pos] = JSON.parse(config.hand_range[pos]);
         }
     }
 
@@ -33,9 +34,9 @@ situation.prototype.update_hand = function() {
     }
 
     this.hand = [];
-    for (let i = 0; i < 2; i++) {
-        this.hand[i] = get_random_card(this.board.concat(this.hand), this.hand_range);
-    }
+    var pair = get_random_card_pair(this.board.concat(this.hand), this.hand_range);
+    this.hand[0] = pair.card1;
+    this.hand[1] = pair.card2;
 };
 
 situation.prototype.set_bet_amount = function(amount) {
@@ -73,7 +74,10 @@ situation.prototype.create_export_data = function() {
         template = template.split(str1).join(str2);
     };
 
-    replace_all('<HAND_ID>', Date.now());
+    var id = Date.now() + performance.now();
+    id = String(id).replace(".","");
+    id = id.substring(0, 14);
+    replace_all('<HAND_ID>', id);
 
     var hole_cards = format_card(this.hand[0]) + ' ' + format_card(this.hand[1]);
     replace_all('<HOLE_CARDS>', hole_cards);
@@ -82,6 +86,13 @@ situation.prototype.create_export_data = function() {
             format_card(this.board[1]) + ' ' +
             format_card(this.board[2]);
     replace_all('<FLOP>', flop);
+
+    var turn = get_random_card(this.board.concat(this.hand));
+    turn = format_card(turn);
+    replace_all('<TURN>', turn);
+
+    var board = flop + " " + turn;
+    replace_all('<BOARD>', board);
 
     if (this.action === 'bets') {
         replace_all('<BET>', this.amount);
