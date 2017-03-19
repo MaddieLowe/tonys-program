@@ -53,48 +53,26 @@
 *** DONE Write tests for card-utils
 *** DONE Allow card pairs, not individual cards
 *** DONE Put unique card into text file as TURN
-*** TODO Create more situations
+*** DONE Create more situations
 * Notes:
 
-<HAND_ID>
-<HOLE_CARDS>
-<FLOP>
-<BET>
-<TURN>
-<BOARD>
+Instructions for adding to a situation:
 
-Things that might change:
-position is variable in every situation
-range of hands per position
-pot size
-options could be raises, calls, or folds
-"raises $3.00 to $5.75"
+1) Copy your template file into app/lib/situations/export-templates/ and rename it
+   so that it is unique and has no spaces
 
-Situation type selector
-Accepts input on what he decides
-sets up a board and hand
-configurable
-pick position
+2) Edit the template so that it contains the following identifiers:
 
-Positions: [
-  Random,
-  BU,
-  SB,
-  BB,
-  UG,
-  MP,
-  CO
-]
+       <HAND_ID>
+       <HOLE_CARDS>
+       <FLOP> // First three cards
+       <BET> // Bet amount
+       <TURN> // The turn card
+       <BOARD> // Flop and turn
 
-First situation:
-Continuation betting in position against the big blind
-In position means button, cutoff, middle, under the gun
-Board: random boards are fine, or it would be nice if he
-could select one or two cards and it would fill in the others
-Hand: depends on the position.
-Maybe make a tool to export positions from range so they can be
-read in from text.
-Pot: $2.75
+3) Open up your situation config file (ex: app/lib/situations/continuation-betting-vs-bb.js/
+   and add the appropriate field under "export_templates"
 
-Will eventually need a way to start a "session" and keep track
-of number of hands completed, and a way to export them to text files.
+4) Go to your terminal and run:
+
+       scripts/build situation-drills
