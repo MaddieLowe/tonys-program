@@ -72,8 +72,10 @@ $(document).ready(function() {
     a_el.style = "display: none";
     download_el.on('click', function() {
         var text_file = "";
+        var hand_id = Date.now();
         completed_hands.forEach(function(hand) {
-            text_file = text_file + hand.create_export_data() + "\n\n\n\n";
+            text_file = text_file + hand.create_export_data(hand_id) + "\n\n\n\n";
+            hand_id++;
         });
 
         var blob = new Blob([text_file], {type: 'text/plain'});

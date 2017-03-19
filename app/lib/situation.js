@@ -57,7 +57,7 @@ situation.prototype.update_available_actions = function() {
     this.available_actions = Object.keys(this.export_templates[this.position]);
 };
 
-situation.prototype.create_export_data = function() {
+situation.prototype.create_export_data = function(hand_id) {
     var template = this.export_templates[this.position][this.action];
     if (!template) {
         console.error('no template');
@@ -74,7 +74,7 @@ situation.prototype.create_export_data = function() {
         template = template.split(str1).join(str2);
     };
 
-    var id = Date.now() + performance.now();
+    var id = hand_id || Date.now();
     id = String(id).replace(".","");
     id = id.substring(0, 14);
     replace_all('<HAND_ID>', id);

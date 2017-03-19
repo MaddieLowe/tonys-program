@@ -28,7 +28,7 @@
 **** TODO the same card may be put on the board twice
 **** TODO when adding a card multiple ranks can be highlighted
 * Situation Drills
-** TODO Continuation betting
+** DONE Continuation betting
 *** DONE Create a new "app"
 **** DONE Change name of files for other app
 *** DONE Create a config file for the continuation betting situation
