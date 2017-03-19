@@ -13,6 +13,9 @@ module.exports = {
         BU: {
             bets: fs.readFileSync(__dirname + '/export-templates/cbet-bu-vs-bb.txt', 'utf8'),
             checks: fs.readFileSync(__dirname + '/export-templates/cbet-bu-vs-bb-nocbet.txt', 'utf8')
+        },
+        CO: {
+            bets: fs.readFileSync(__dirname + '/export-templates/cbet-co-vs-bb.txt', 'utf8')
         }
     }
 };
