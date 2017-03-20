@@ -15,7 +15,16 @@ module.exports = {
             checks: fs.readFileSync(__dirname + '/export-templates/cbet-bu-vs-bb-nocbet.txt', 'utf8')
         },
         CO: {
-            bets: fs.readFileSync(__dirname + '/export-templates/cbet-co-vs-bb.txt', 'utf8')
+            bets: fs.readFileSync(__dirname + '/export-templates/cbet-co-vs-bb.txt', 'utf8'),
+            checks: fs.readFileSync(__dirname + '/export-templates/cbet-co-vs-bb-nocbet.txt', 'utf8')
+        },
+        MP: {
+            bets: fs.readFileSync(__dirname + '/export-templates/cbet-mp-vs-bb.txt', 'utf8'),
+            checks: fs.readFileSync(__dirname + '/export-templates/cbet-mp-vs-bb-nocbet.txt', 'utf8')
+        },
+        UG: {
+            bets: fs.readFileSync(__dirname + '/export-templates/cbet-ug-vs-bb.txt', 'utf8'),
+            checks: fs.readFileSync(__dirname + '/export-templates/cbet-ug-vs-bb-nocbet.txt', 'utf8')
         }
     }
 };

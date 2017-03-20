@@ -1,0 +1,33 @@
+PokerStars Hand #<HAND_ID>:  Hold'em No Limit ($0.25/$0.50 USD) - 2017/03/03 14:41:05 MT [2017/03/03 16:41:05 ET]
+Table 'Drills' 6-max Seat #1 is the button
+Seat 1: Dealer ($50 in chips)
+Seat 2: SmallBlind ($50 in chips)
+Seat 3: BigBlind ($50 in chips)
+Seat 4: LtGrimms ($50 in chips)
+Seat 5: Middle ($50 in chips)
+Seat 6: Cutoff ($50 in chips)
+SmallBlind: posts small blind $0.25
+BigBlind: posts big blind $0.50
+*** HOLE CARDS ***
+Dealt to LtGrimms [<HOLE_CARDS>]
+LtGrimms: raises $0.75 to $1.25
+Middle: folds
+Cutoff: folds
+Dealer: folds
+SmallBlind: folds
+BigBlind: calls $0.75
+*** FLOP *** [<FLOP>]
+BigBlind: checks
+LtGrimms: bets $<BET>
+BigBlind: folds
+Uncalled bet ($<BET>) returned to LtGrimms
+LtGrimms collected $2.75 from the pot
+*** SUMMARY ***
+Total pot $2.75 | Rake $0.00 
+Board [<FLOP>]
+Seat 1: Dealer (button) folded before Flop (didn't bet)
+Seat 2: SmallBlind (small blind) folded before Flop
+Seat 3: BigBlind (big blind) folded on the Flop
+Seat 4: LtGrimms collected ($2.75)
+Seat 5: Middle folded before Flop (didn't bet)
+Seat 6: Cutoff folded before Flop (didn't bet)
