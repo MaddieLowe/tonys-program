@@ -1,10 +1,10 @@
-var card = require('./card');
-var card_pair = require('./card-pair');
+let card = require('./card');
+let card_pair = require('./card-pair');
 
-var suit_map = module.exports.suit_map = ['D','C','H','S'];
+let suit_map = module.exports.suit_map = ['D','C','H','S'];
 
-var card_from_value = module.exports.card_from_value = function(val) {
-    var str;
+let card_from_value = module.exports.card_from_value = function(val) {
+    let str;
     switch(val) {
     case 10:
         str = "T";
@@ -28,7 +28,7 @@ var card_from_value = module.exports.card_from_value = function(val) {
     return str;
 };
 
-var get_card_matches_func = function(value, suit) {
+let get_card_matches_func = function(value, suit) {
     return function(c) {
         return c.value === value & c.suit === suit;
     };
@@ -36,23 +36,23 @@ var get_card_matches_func = function(value, suit) {
 
 module.exports.get_random_card = function(invalid_cards, valid_cards) {
     invalid_cards = invalid_cards || [];
-    var value;
-    var suit;
+    let value;
+    let suit;
 
-    var get_card_from_deck = function() {
-        var v = Math.round(Math.random() * (14 - 2) + 2);
-        var s = Math.round(Math.random() * 3);
+    let get_card_from_deck = function() {
+        let v = Math.round(Math.random() * (14 - 2) + 2);
+        let s = Math.round(Math.random() * 3);
         value = v;
         suit = suit_map[s];
     };
 
-    var get_card_from_range = function() {
-        var i = Math.round(Math.random() * ((valid_cards.length - 1) - 0) + 0);
+    let get_card_from_range = function() {
+        let i = Math.round(Math.random() * ((valid_cards.length - 1) - 0) + 0);
         value = valid_cards[i].value;
         suit = valid_cards[i].suit;
     };
 
-    var count = 0;
+    let count = 0;
     do {
         if (count !== 0) {
             console.log("Re-getting card because we already have " + value + suit);
@@ -93,8 +93,8 @@ module.exports.get_random_card_pair = function(invalid_cards, valid_pairs) {
 };
 
 module.exports.pairs_array_to_card_array = function(pairs_array) {
-    var cards = [];
-    for (var i = 0; i < pairs_array.length; i++) {
+    let cards = [];
+    for (let i = 0; i < pairs_array.length; i++) {
         cards.push(new card(pairs_array[i].card1.name));
         cards.push(new card(pairs_array[i].card2.name));
     }
@@ -102,6 +102,6 @@ module.exports.pairs_array_to_card_array = function(pairs_array) {
 };
 
 module.exports.get_random_position = function(positions) {
-    var i = Math.round(Math.random() * ((positions.length - 1) - 0) + 0);
+    let i = Math.round(Math.random() * ((positions.length - 1) - 0) + 0);
     return positions[i];
 };

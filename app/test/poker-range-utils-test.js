@@ -1,9 +1,9 @@
-var poker_range_utils = require('../lib/poker-range-utils');
+let poker_range_utils = require('../lib/poker-range-utils');
 
 describe('poker-range-utils', function() {
     describe('find_all_pairs', function() {
         it ('should find 6 pairs, and each card in a pair must have a different suit', function() {
-            var pairs = poker_range_utils.find_all_pairs('A', 'A');
+            let pairs = poker_range_utils.find_all_pairs('A', 'A');
             pairs.length.should.eql(6);
             pairs[0].name.should.eql('ADAC');
             pairs[1].name.should.eql('AHAD');
@@ -16,7 +16,7 @@ describe('poker-range-utils', function() {
 
     describe('find_all_suited', function() {
         it ('should find 4 pairs and each card in a pair must have the same suit', function() {
-            var pairs = poker_range_utils.find_all_suited('A', 'K');
+            let pairs = poker_range_utils.find_all_suited('A', 'K');
             pairs.length.should.eql(4);
             pairs[0].name.should.eql('ADKD');
             pairs[1].name.should.eql('ACKC');
@@ -27,7 +27,7 @@ describe('poker-range-utils', function() {
 
     describe('find_all_offsuit', function() {
         it ('should find 12 pairs and each card in the pair must have a different suit', function() {
-            var pairs = poker_range_utils.find_all_offsuit('A','K');
+            let pairs = poker_range_utils.find_all_offsuit('A','K');
             pairs.length.should.eql(12);
             pairs[0].name.should.eql('ACKD');
             pairs[1].name.should.eql('AHKD');

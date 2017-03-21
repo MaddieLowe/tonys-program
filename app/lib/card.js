@@ -27,7 +27,7 @@ function card(name) {
 }
 
 card.prototype.value_to_string = function() {
-    var ret;
+    let ret;
     switch(this.value) {
     case 14:
         ret = "A";

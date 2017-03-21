@@ -1,6 +1,6 @@
-var get_random_card = require('./card-utils').get_random_card;
-var get_random_card_pair = require('./card-utils').get_random_card_pair;
-var get_random_position = require('./card-utils').get_random_position;
+let get_random_card = require('./card-utils').get_random_card;
+let get_random_card_pair = require('./card-utils').get_random_card_pair;
+let get_random_position = require('./card-utils').get_random_position;
 
 function situation(config) {
     let board_size = config.board_size || 3;
@@ -13,7 +13,7 @@ function situation(config) {
 
     if (config.hand_range) {
         this.hand_ranges_by_position = {};
-        for (var pos in config.hand_range) {
+        for (let pos in config.hand_range) {
             this.hand_ranges_by_position[pos] = JSON.parse(config.hand_range[pos]);
         }
     }
@@ -33,7 +33,7 @@ situation.prototype.update_hand = function() {
     }
 
     this.hand = [];
-    var pair = get_random_card_pair(this.board.concat(this.hand), this.hand_range);
+    let pair = get_random_card_pair(this.board.concat(this.hand), this.hand_range);
     this.hand[0] = pair.card1;
     this.hand[1] = pair.card2;
 };
@@ -57,7 +57,7 @@ situation.prototype.update_available_actions = function() {
 };
 
 situation.prototype.create_export_data = function(hand_id) {
-    var template = this.export_templates[this.position][this.action];
+    let template = this.export_templates[this.position][this.action];
     if (!template) {
         console.error('no template');
         console.error(this);
@@ -65,32 +65,32 @@ situation.prototype.create_export_data = function(hand_id) {
             " and action " + this.action;
     }
 
-    var format_card = function(card) {
+    let format_card = function(card) {
         return card.name[0] + card.name[1].toLowerCase();
     };
 
-    var replace_all = function(str1, str2) {
+    let replace_all = function(str1, str2) {
         template = template.split(str1).join(str2);
     };
 
-    var id = hand_id || Date.now();
+    let id = hand_id || Date.now();
     id = String(id).replace(".","");
     id = id.substring(0, 14);
     replace_all('<HAND_ID>', id);
 
-    var hole_cards = format_card(this.hand[0]) + ' ' + format_card(this.hand[1]);
+    let hole_cards = format_card(this.hand[0]) + ' ' + format_card(this.hand[1]);
     replace_all('<HOLE_CARDS>', hole_cards);
 
-    var flop = format_card(this.board[0]) + ' ' +
+    let flop = format_card(this.board[0]) + ' ' +
             format_card(this.board[1]) + ' ' +
             format_card(this.board[2]);
     replace_all('<FLOP>', flop);
 
-    var turn = get_random_card(this.board.concat(this.hand));
+    let turn = get_random_card(this.board.concat(this.hand));
     turn = format_card(turn);
     replace_all('<TURN>', turn);
 
-    var board = flop + " " + turn;
+    let board = flop + " " + turn;
     replace_all('<BOARD>', board);
 
     if (this.action === 'bets') {

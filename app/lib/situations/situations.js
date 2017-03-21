@@ -1,4 +1,4 @@
-var situations = {
+let situations = {
     "Continuation Betting vs Big Blind": require('./continuation-betting-vs-bb')
 };
 
