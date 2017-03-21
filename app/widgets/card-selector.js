@@ -21,16 +21,16 @@ module.exports = function(element, model) {
 
 
     var value_click_handler = function(value_el, val) {
-	return function(event) {
-	    suits_el.addClass('selected');
-	    value_el.addClass('selected');
-	    selected_value = val;
-	};
+        return function() {
+            suits_el.addClass('selected');
+            value_el.addClass('selected');
+            selected_value = val;
+        };
     };
 
     function update_displayed_cards() {
         var delete_card_handler = function(card) {
-            return function(event) {
+            return function() {
                 model.splice(model.indexOf(card), 1);
                 update_displayed_cards();
                 emitter.emit('changed');
@@ -48,39 +48,39 @@ module.exports = function(element, model) {
             // TODO: teardown
             delete_button.on('click', delete_card_handler(card));
         });
-    };
+    }
 
     for (var i = 2; i <= 14; i++) {
-	var val = card_from_value(i);
-	var value_el = $("<div>" + val + "</div>");
-	values_el.append(value_el);
+        var val = card_from_value(i);
+        var value_el = $("<div>" + val + "</div>");
+        values_el.append(value_el);
         // TODO: teardown
-	value_el.on('click', value_click_handler(value_el, val));
+        value_el.on('click', value_click_handler(value_el, val));
     }
 
     suit_map.forEach(function(suit) {
-	var suit_el = $("<div>" + suit + "</div>");
-	suits_el.append(suit_el);
-	// TODO: teardown
-	suit_el.on('click', function(event) {
-	    element.find('*').removeClass('selected');
-	    selected_suit = suit;
+        var suit_el = $("<div>" + suit + "</div>");
+        suits_el.append(suit_el);
+        // TODO: teardown
+        suit_el.on('click', function() {
+            element.find('*').removeClass('selected');
+            selected_suit = suit;
             var selected_card = new card(card_from_value(selected_value) + selected_suit);
             model.push(selected_card);
             update_displayed_cards();
             emitter.emit('changed');
-	});
+        });
     });
 
     var add_card_el = element.find('.add-card');
     // TODO: teardown
-    add_card_el.on('click', function(event) {
-	values_el.addClass('selected');
+    add_card_el.on('click', function() {
+        values_el.addClass('selected');
     });
 
     var clear_cards_el = element.find('.clear-cards');
     // TODO: teardown
-    clear_cards_el.on('click', function(event) {
+    clear_cards_el.on('click', function() {
         model.splice(0, model.length);
         update_displayed_cards();
         emitter.emit('changed');
@@ -88,7 +88,7 @@ module.exports = function(element, model) {
 
     var random_el = element.find('.random');
     // TODO: teardown
-    random_el.on('click', function(event) {
+    random_el.on('click', function() {
         model.splice(0, model.length);
         for (var i = 0; i < 3; i++) {
             model[i] = get_random_card(model);

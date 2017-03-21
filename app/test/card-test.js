@@ -1,5 +1,4 @@
 var card = require('../lib/card');
-var should = require('should');
 
 describe('card', function() {
     it('should create a card with the correct value and suit regardless of case of name passed in', function() {

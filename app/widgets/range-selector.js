@@ -5,14 +5,14 @@ module.exports = function(element, model) {
     var dragging = false;
 
     var select_handler = function(column, item) {
-        return function(event) {
+        return function() {
             column.addClass('selected');
             item.selected = true;
         };
     };
 
     var click_handler = function(column, item) {
-        return function(event) {
+        return function() {
             if (column.hasClass('selected')) {
                 column.removeClass('selected');
                 item.selected = false;

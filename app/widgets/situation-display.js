@@ -52,7 +52,7 @@ module.exports = function(element, model) {
     for (let p in pots) {
         let pot = pots[p];
         // TODO: teardown
-        pot.el.on('click', function($event) {
+        pot.el.on('click', function() {
             model.set_bet_amount(model.pot * pot.scale);
             update_bet_display();
             emitter.emit('change');

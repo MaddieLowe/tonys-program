@@ -1,8 +1,6 @@
 var rank_hands = require('../lib/rank-hands');
 var card = require('../lib/card');
 var card_pair = require('../lib/card-pair');
-var card_collection = require('../lib/card-collection');
-var should = require('should');
 
 describe('rank-hands', function() {
     describe('broadway', function() {
@@ -518,7 +516,7 @@ describe('rank-hands', function() {
             var weak_pair = rank_hands.weak_pair(pair, board);
 
             weak_pair.should.equal(true);
-        })
+        });
 
         it ('should not rank 87 in the hand and Q85 in the board as a weak pair', function() {
             var board = [

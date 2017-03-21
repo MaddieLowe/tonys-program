@@ -28,12 +28,12 @@ module.exports = function(element, model) {
 
     var update_model = function() {
         var pairs = poker_range_utils.convert_model(base_model,
-						    base_models.offsuit,
-						    suit_models.offsuit,
-						    base_models.suited,
-						    suit_models.suited,
-						    base_models.paired,
-						    suit_models.paired);
+                                                    base_models.offsuit,
+                                                    suit_models.offsuit,
+                                                    base_models.suited,
+                                                    suit_models.suited,
+                                                    base_models.paired,
+                                                    suit_models.paired);
         // Alter the model without losing the reference to the original array object
         model.length = 0;
         for (var i = 0; i < pairs.length; i++) {
@@ -44,31 +44,31 @@ module.exports = function(element, model) {
 
     // Initialize the suit range selectors
     ['offsuit','suited','paired'].forEach(function(suit_selector_type) {
-	var suit_selector_base_element = element.find('.' + suit_selector_type + ' range.base');
-	var suit_selector_base_model = JSON.parse(JSON.stringify(base_range));
-	var suit_seletor_base_emitter = range_selector(suit_selector_base_element, suit_selector_base_model);
+        var suit_selector_base_element = element.find('.' + suit_selector_type + ' range.base');
+        var suit_selector_base_model = JSON.parse(JSON.stringify(base_range));
+        var suit_seletor_base_emitter = range_selector(suit_selector_base_element, suit_selector_base_model);
 
-	var suit_selector_element = element.find('.' + suit_selector_type + ' range.suit-selection');
-	var suit_selector_model = JSON.parse(JSON.stringify(suit_selector_ranges[suit_selector_type]));
-	var suit_selector_emitter = range_selector(suit_selector_element, suit_selector_model);
-	suit_selector_emitter.on('changed', update_model);
+        var suit_selector_element = element.find('.' + suit_selector_type + ' range.suit-selection');
+        var suit_selector_model = JSON.parse(JSON.stringify(suit_selector_ranges[suit_selector_type]));
+        var suit_selector_emitter = range_selector(suit_selector_element, suit_selector_model);
+        suit_selector_emitter.on('changed', update_model);
 
-	var suit_selector_title = element.find('.button:contains("' + suit_selector_type + '")');
-	var suit_selector_section = element.find('.section.' + suit_selector_type);
-	// TODO: teardown
-	suit_selector_title.on('click', function() {
+        var suit_selector_title = element.find('.button:contains("' + suit_selector_type + '")');
+        var suit_selector_section = element.find('.section.' + suit_selector_type);
+        // TODO: teardown
+        suit_selector_title.on('click', function() {
             if (suit_selector_section.hasClass('showing')) {
-		suit_selector_section.removeClass('showing');
-		suit_selector_title.removeClass('showing');
+                suit_selector_section.removeClass('showing');
+                suit_selector_title.removeClass('showing');
             } else {
-		element.find('.showing').removeClass('showing');
-		suit_selector_section.addClass('showing');
-		suit_selector_title.addClass('showing');
+                element.find('.showing').removeClass('showing');
+                suit_selector_section.addClass('showing');
+                suit_selector_title.addClass('showing');
             }
-	});
+        });
 
-	base_models[suit_selector_type] = suit_selector_base_model;
-	suit_models[suit_selector_type] = suit_selector_model;
+        base_models[suit_selector_type] = suit_selector_base_model;
+        suit_models[suit_selector_type] = suit_selector_model;
     });
 
     base_range_selector_emitter.on('changed', update_model);

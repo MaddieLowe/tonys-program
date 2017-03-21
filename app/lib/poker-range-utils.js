@@ -2,10 +2,12 @@ var card_pair = require('./card-pair');
 
 // This function makes the assumption that the base_model and the offsuit_base_model are the same size with the same
 // cards at the same indexes
-var default_suit_pairs = ['dd','cd','hd','sd',
-                          'dc','cc','hc','sc',
-                          'dh','ch','hh','sh',
-                          'ds','cs','hs','ss'];
+var default_suit_pairs = [
+    'dd','cd','hd','sd',
+    'dc','cc','hc','sc',
+    'dh','ch','hh','sh',
+    'ds','cs','hs','ss'
+];
 
 var find_all_pairs = module.exports.find_all_pairs = function(val1, val2, suit_pairs) {
     suit_pairs = suit_pairs || default_suit_pairs;
@@ -63,12 +65,12 @@ var convert_suit_model = function(suit_model) {
 };
 
 module.exports.convert_model = function(base_model,
-					offsuit_base_model,
-					offsuit_suit_model,
-					suited_base_model,
-					suited_suit_model,
-					paired_base_model,
-					paired_suit_model) {
+                                        offsuit_base_model,
+                                        offsuit_suit_model,
+                                        suited_base_model,
+                                        suited_suit_model,
+                                        paired_base_model,
+                                        paired_suit_model) {
     var card_pairs = [];
 
     var offsuit_pairs = convert_suit_model(offsuit_suit_model);
@@ -83,17 +85,17 @@ module.exports.convert_model = function(base_model,
             var card1 = name[0];
             var card2 = name[1];
             if (name.length === 2) { // This is a pair then
-		if (paired_base_model[i][j].selected) {
-		    card_pairs = card_pairs.concat(find_all_pairs(card1, card2, paired_pairs));
-		} else {
+                if (paired_base_model[i][j].selected) {
+                    card_pairs = card_pairs.concat(find_all_pairs(card1, card2, paired_pairs));
+                } else {
                     card_pairs = card_pairs.concat(find_all_pairs(card1, card2));
-		}
+                }
             } else if (name[2] === 's') { // This is suited
-		if (suited_base_model[i][j].selected) {
-		    card_pairs = card_pairs.concat(find_all_suited(card1, card2, suited_pairs));
-		} else {
+                if (suited_base_model[i][j].selected) {
+                    card_pairs = card_pairs.concat(find_all_suited(card1, card2, suited_pairs));
+                } else {
                     card_pairs = card_pairs.concat(find_all_suited(card1, card2));
-		}
+                }
             } else if (name[2] === 'o') { // This is offsuit
                 if (offsuit_base_model[i][j].selected) {
                     card_pairs = card_pairs.concat(find_all_offsuit(card1, card2, offsuit_pairs));

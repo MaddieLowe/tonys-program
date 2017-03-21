@@ -12,7 +12,7 @@ function card_collection(cards_collection) {
     }
 
     this.sort();
-};
+}
 
 card_collection.prototype.sort = function() {
     this.cards.sort(function(a, b) {

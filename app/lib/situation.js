@@ -1,6 +1,5 @@
 var get_random_card = require('./card-utils').get_random_card;
 var get_random_card_pair = require('./card-utils').get_random_card_pair;
-var pairs_array_to_card_array = require('./card-utils').pairs_array_to_card_array;
 var get_random_position = require('./card-utils').get_random_position;
 
 function situation(config) {

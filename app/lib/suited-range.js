@@ -5,63 +5,63 @@ module.exports = [
         },
         {
             name: "CD",
-	    disabled: true
+            disabled: true
         },
         {
             name: "HD",
-	    disabled: true
+            disabled: true
         },
         {
             name: "SD",
-	    disabled: true
+            disabled: true
         }
     ],
     [
         {
             name: "DC",
-	    disabled: true
+            disabled: true
         },
         {
             name: "CC"
         },
         {
             name: "HC",
-	    disabled: true
+            disabled: true
         },
         {
             name: "SC",
-	    disabled: true
+            disabled: true
         }
     ],
     [
         {
             name: "DH",
-	    disabled: true
+            disabled: true
         },
         {
             name: "CH",
-	    disabled: true
+            disabled: true
         },
         {
             name: "HH"
         },
         {
             name: "SH",
-	    disabled: true
+            disabled: true
         }
     ],
     [
         {
             name: "DS",
-	    disabled: true
+            disabled: true
         },
         {
             name: "CS",
-	    disabled: true
+            disabled: true
         },
         {
             name: "HS",
-	    disabled: true
+            disabled: true
         },
         {
             name: "SS"

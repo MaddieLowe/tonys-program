@@ -10,7 +10,7 @@ module.exports = function(element, model) {
         $(el).on('click', function() {
             emitter.emit('change', el.textContent);
         });
-    };
+    }
 
     return emitter;
 };

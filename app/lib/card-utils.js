@@ -7,23 +7,23 @@ var card_from_value = module.exports.card_from_value = function(val) {
     var str;
     switch(val) {
     case 10:
-	str = "T";
-	break;
+        str = "T";
+        break;
     case 11:
-	str = "J";
-	break;
+        str = "J";
+        break;
     case 12:
-	str = "Q";
-	break;
+        str = "Q";
+        break;
     case 13:
-	str = "K";
-	break;
+        str = "K";
+        break;
     case 14:
-	str = "A";
-	break;
+        str = "A";
+        break;
     default:
-	str = val;
-    };
+        str = val;
+    }
 
     return str;
 };
@@ -67,7 +67,7 @@ module.exports.get_random_card = function(invalid_cards, valid_cards) {
         } else {
             get_card_from_deck();
         }
-    } while (invalid_cards.find(get_card_matches_func(value, suit)))
+    } while (invalid_cards.find(get_card_matches_func(value, suit)));
 
     return new card(card_from_value(value) + suit);
 };
@@ -87,7 +87,7 @@ module.exports.get_random_card_pair = function(invalid_cards, valid_pairs) {
         let i = Math.round(Math.random() * ((valid_pairs.length - 1) - 0) + 0);
         pair = valid_pairs[i];
     } while (invalid_cards.find(get_card_matches_func(pair.card1.value, pair.card1.suit)) ||
-             invalid_cards.find(get_card_matches_func(pair.card2.value, pair.card2.suit)))
+             invalid_cards.find(get_card_matches_func(pair.card2.value, pair.card2.suit)));
 
     return new card_pair(pair.card1.name, pair.card2.name);
 };

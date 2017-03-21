@@ -3,22 +3,22 @@ function card(name) {
     this.name = name.toUpperCase();
 
     switch(name[0].toLowerCase()) {
-        case 'a':
+    case 'a':
         this.value = 14;
         break;
-        case 't':
+    case 't':
         this.value = 10;
         break;
-        case 'j':
+    case 'j':
         this.value = 11;
         break;
-        case 'q':
+    case 'q':
         this.value = 12;
         break;
-        case 'k':
+    case 'k':
         this.value = 13;
         break;
-        default:
+    default:
         this.value = parseInt(name[0], 10);
     }
 
@@ -29,22 +29,22 @@ function card(name) {
 card.prototype.value_to_string = function() {
     var ret;
     switch(this.value) {
-        case 14:
+    case 14:
         ret = "A";
         break;
-        case 10:
+    case 10:
         ret = "T";
         break;
-        case 11:
+    case 11:
         ret = "J";
         break;
-        case 12:
+    case 12:
         ret = "Q";
         break;
-        case 13:
+    case 13:
         ret = "K";
         break;
-        default:
+    default:
         ret = "" + this.value;
     }
 
