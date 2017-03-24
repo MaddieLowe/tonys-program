@@ -1,7 +1,7 @@
-var card_utils = require('../lib/card-utils');
-var card = require('../lib/card');
-var card_pair = require('../lib/card-pair');
-var should = require('should');
+let card_utils = require('../lib/card-utils');
+let card = require('../lib/card');
+let card_pair = require('../lib/card-pair');
+const should = require('should');
 
 describe('card-utils', function() {
     describe('card_from_value', function() {
@@ -17,9 +17,9 @@ describe('card-utils', function() {
     });
 
     describe('get_random_card', function() {
-        var old_random = Math.random;
+        let old_random = Math.random;
         beforeEach(function() {
-            var count = 0;
+            let count = 0;
             Math.random = function() {
                 count++;
                 if (count === 1 ||
@@ -43,30 +43,30 @@ describe('card-utils', function() {
         });
 
         it ('should get a random card from the deck', function() {
-            var card = card_utils.get_random_card();
+            let card = card_utils.get_random_card();
             card.name.should.eql("6C");
         });
 
         it ('should not return an invalid card', function() {
-            var invalid_card = new card("6C");
-            var c = card_utils.get_random_card([invalid_card]);
+            let invalid_card = new card("6C");
+            let c = card_utils.get_random_card([invalid_card]);
             c.name.should.not.eql("6C");
             c.name.should.eql("9H");
         });
 
         it ('should only return valid cards', function() {
-            var invalid_card = new card("6C");
-            var valid_card = new card("TS");
-            var c = card_utils.get_random_card([invalid_card], [valid_card]);
+            let invalid_card = new card("6C");
+            let valid_card = new card("TS");
+            let c = card_utils.get_random_card([invalid_card], [valid_card]);
             c.name.should.not.eql("6C");
             c.name.should.eql("TS");
         });
     });
 
     describe('get_random_card_pair', function() {
-        var old_random = Math.random;
+        let old_random = Math.random;
         beforeEach(function() {
-            var count = 0;
+            let count = 0;
             Math.random = function() {
                 count++;
                 if (count === 1 ||
@@ -90,22 +90,22 @@ describe('card-utils', function() {
         });
 
         it ('should return a pair in the range of valid pairs', function() {
-            var range = [
+            let range = [
                 new card_pair("AC","AS"),
                 new card_pair("TD","9H")
             ];
-            var pair = card_utils.get_random_card_pair([], range);
+            let pair = card_utils.get_random_card_pair([], range);
             pair.card1.name.should.eql("AS");
             pair.card2.name.should.eql("AC");
         });
 
         it ('should not return a card that is in the invalid cards list', function() {
-            var range = [
+            let range = [
                 new card_pair("AC","AS"),
                 new card_pair("TD","9H")
             ];
-            var invalid_cards = [new card("AC")];
-            var pair = card_utils.get_random_card_pair(invalid_cards, range);
+            let invalid_cards = [new card("AC")];
+            let pair = card_utils.get_random_card_pair(invalid_cards, range);
             pair.card1.name.should.not.eql("AS");
             pair.card2.name.should.not.eql("AC");
             pair.card1.name.should.eql("TD");

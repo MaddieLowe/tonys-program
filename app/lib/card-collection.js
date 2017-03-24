@@ -1,8 +1,8 @@
 function card_collection(cards_collection) {
-    var cards = JSON.parse(JSON.stringify(cards_collection));
+    let cards = JSON.parse(JSON.stringify(cards_collection));
     this.cards = [];
 
-    for (var i = 0; i < cards.length; i++) {
+    for (let i = 0; i < cards.length; i++) {
         if (cards[i].type === "pair") {
             this.cards.push(cards[i].card1);
             this.cards.push(cards[i].card2);
@@ -12,7 +12,7 @@ function card_collection(cards_collection) {
     }
 
     this.sort();
-};
+}
 
 card_collection.prototype.sort = function() {
     this.cards.sort(function(a, b) {
@@ -26,15 +26,15 @@ card_collection.prototype.sort = function() {
 };
 
 card_collection.prototype.sort_by_suit = function() {
-    var suit_enum = {
+    let suit_enum = {
         C: 0,
         D: 1,
         S: 2,
         H: 3
     };
-    var temp = [];
-    for (var i = 0; i < this.cards.length; i++) {
-        var index = suit_enum[this.cards[i].suit];
+    let temp = [];
+    for (let i = 0; i < this.cards.length; i++) {
+        let index = suit_enum[this.cards[i].suit];
         if (!temp[index]) temp[index] = [];
         temp[index].push(this.cards[i]);
     }
@@ -47,8 +47,8 @@ card_collection.prototype.sort_by_suit = function() {
         return 0;
     });
 
-    var sorted_cards = [];
-    for (var j = 0; j < temp.length; j++) {
+    let sorted_cards = [];
+    for (let j = 0; j < temp.length; j++) {
         if (temp[j]) {
             sorted_cards = sorted_cards.concat(temp[j]);
         }
@@ -57,11 +57,11 @@ card_collection.prototype.sort_by_suit = function() {
 };
 
 card_collection.prototype.remove_pairs = function() {
-    var uniq_cards = [];
+    let uniq_cards = [];
     uniq_cards.push(this.cards[0]);
-    for (var i = 1; i < this.cards.length; i++) {
-        var cur_card = this.cards[i];
-        var prev_card = this.cards[i - 1];
+    for (let i = 1; i < this.cards.length; i++) {
+        let cur_card = this.cards[i];
+        let prev_card = this.cards[i - 1];
         if (cur_card.value !== prev_card.value) {
             uniq_cards.push(cur_card);
         }
@@ -71,8 +71,8 @@ card_collection.prototype.remove_pairs = function() {
 };
 
 card_collection.prototype.remove_aces = function() {
-    var non_aces = [];
-    for (var i = 0; i < this.cards.length; i++) {
+    let non_aces = [];
+    for (let i = 0; i < this.cards.length; i++) {
         if (this.cards[i].value !== 14) {
             non_aces.push(this.cards[i]);
         }

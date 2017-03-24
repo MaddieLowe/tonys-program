@@ -6,7 +6,7 @@
  *
  * and a callback, and calls the callback on each item, similar to a forEach
  */
-var hand_order = [
+let hand_order = [
     'straight_flush',
     'quads',
     'full_house',
@@ -29,7 +29,7 @@ var hand_order = [
 ];
 
 module.exports = function(combos, do_on_each_item) {
-    for (var i = 0; i < hand_order.length; i++) {
+    for (let i = 0; i < hand_order.length; i++) {
         if (combos[hand_order[i]]) {
             do_on_each_item(hand_order[i], combos[hand_order[i]]);
         }

@@ -12,6 +12,7 @@
     },
     "devDependencies":
     {
+        "eslint": "*",
         "mocha": "*",
         "should": "*"
     }

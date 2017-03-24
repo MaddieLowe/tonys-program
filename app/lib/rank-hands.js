@@ -1,9 +1,9 @@
-var card_collection = require('./card-collection');
+let card_collection = require('./card-collection');
 
-var broadway = module.exports.broadway = function(pair, board) { // broadway is a straight A,K,Q,J,T
-    var hand = new card_collection(board.concat(pair));
+let broadway = module.exports.broadway = function(pair, board) { // broadway is a straight A,K,Q,J,T
+    let hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
-    
+
     if (hand.cards.length < 5) return false;
 
     if (hand.cards[0].value === 14 && hand.cards[4].value === 10) {
@@ -12,13 +12,13 @@ var broadway = module.exports.broadway = function(pair, board) { // broadway is 
     return false;
 };
 
-var wheel = module.exports.wheel = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let wheel = module.exports.wheel = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
 
     if (hand.cards.length < 5) return false;
 
-    var last_card = hand.cards.length - 1;
+    let last_card = hand.cards.length - 1;
     if (hand.cards[last_card].value === 2 &&
         hand.cards[last_card - 3].value === 5 &&
         hand.cards[0].value === 14) {
@@ -27,17 +27,17 @@ var wheel = module.exports.wheel = function(pair, board) {
     return false;
 };
 
-var open_ended_straight_counter = module.exports.open_ended_straight_counter = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let open_ended_straight_counter = module.exports.open_ended_straight_counter = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
     hand.remove_pairs();
     hand.remove_aces();
     if (hand.is_empty()) {
         return 0;
     }
 
-    var length = 1;
-    var length_max_straight = 1;
-    for (var i = 1; i < hand.cards.length; i++) {
+    let length = 1;
+    let length_max_straight = 1;
+    for (let i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].value === (hand.cards[i - 1].value - 1)) {
             length++;
             length_max_straight = Math.max(length_max_straight, length);
@@ -49,12 +49,12 @@ var open_ended_straight_counter = module.exports.open_ended_straight_counter = f
     return length_max_straight;
 };
 
-var straight = module.exports.straight = function(pair, board) {
+let straight = module.exports.straight = function(pair, board) {
     if (broadway(pair, board) || wheel(pair, board)) {
         return true;
     }
 
-    var length = open_ended_straight_counter(pair, board);
+    let length = open_ended_straight_counter(pair, board);
     if (length >= 5) {
         return true;
     }
@@ -62,13 +62,13 @@ var straight = module.exports.straight = function(pair, board) {
     return false;
 };
 
-var matching_suits = module.exports.matching_suits = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let matching_suits = module.exports.matching_suits = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
     hand.sort_by_suit();
 
-    var matching_suits = 1;
-    var max_matching_suits = 1;
-    for (var i = 1; i < hand.cards.length; i++) {
+    let matching_suits = 1;
+    let max_matching_suits = 1;
+    for (let i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].suit === hand.cards[i - 1].suit) {
             matching_suits++;
             max_matching_suits = Math.max(max_matching_suits, matching_suits);
@@ -80,22 +80,22 @@ var matching_suits = module.exports.matching_suits = function(pair, board) {
     return max_matching_suits;
 };
 
-var flush = module.exports.flush = function(pair, board) {
+let flush = module.exports.flush = function(pair, board) {
     return matching_suits(pair, board) >= 5;
 };
 
-var straight_flush = module.exports.straight_flush = function(pair, board) {
+let straight_flush = module.exports.straight_flush = function(pair, board) {
     if (straight(pair, board) && flush(pair, board)) {
         return true;
     }
     return false;
 };
 
-var identical_cards = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
-    var max_identical_cards = 1;
-    var identical_cards = 1;
-    for (var i = 1; i < hand.cards.length; i++) {
+let identical_cards = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
+    let max_identical_cards = 1;
+    let identical_cards = 1;
+    for (let i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].value === hand.cards[i - 1].value) {
             identical_cards++;
             max_identical_cards = Math.max(max_identical_cards, identical_cards);
@@ -106,19 +106,20 @@ var identical_cards = function(pair, board) {
     return max_identical_cards;
 };
 
-var quads = module.exports.quads = function(pair, board) {
+let quads = module.exports.quads = function(pair, board) {
     return identical_cards(pair, board)  === 4;
 };
 
-var three_of_a_kind = module.exports.three_of_a_kind = function(pair, board) {
+let three_of_a_kind = module.exports.three_of_a_kind = function(pair, board) {
     return identical_cards(pair, board) === 3;
 };
 
-var rank_of_highest_pair = module.exports.rank_of_highest_pair = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let rank_of_highest_pair = module.exports.rank_of_highest_pair = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
 
-    var identical_cards = 1;
-    for (var i = 1; i < hand.cards.length; i++) {
+    let identical_cards = 1;
+    let i;
+    for (i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].value === hand.cards[i - 1].value) {
             identical_cards++;
         } else {
@@ -134,19 +135,19 @@ var rank_of_highest_pair = module.exports.rank_of_highest_pair = function(pair, 
     return 0;
 };
 
-var full_house = module.exports.full_house = function(pair, board) {
+let full_house = module.exports.full_house = function(pair, board) {
     if (three_of_a_kind(pair, board) && rank_of_highest_pair(pair, board) > 0) {
         return true;
     }
     return false;
 };
 
-var two_pair = module.exports.two_pair = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let two_pair = module.exports.two_pair = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
 
-    var identical_cards = 1;
-    var pairs = 0;
-    for (var i = 1; i < hand.cards.length; i++) {
+    let identical_cards = 1;
+    let pairs = 0;
+    for (let i = 1; i < hand.cards.length; i++) {
         if (hand.cards[i].value === hand.cards[i - 1].value) {
             identical_cards++;
         } else {
@@ -163,32 +164,32 @@ var two_pair = module.exports.two_pair = function(pair, board) {
     return pairs >= 2;
 };
 
-var overpair = module.exports.overpair = function(pair, board) {
-    var sorted_board = new card_collection(board);
-    var highest_pair = rank_of_highest_pair(pair, board);
+let overpair = module.exports.overpair = function(pair, board) {
+    let sorted_board = new card_collection(board);
+    let highest_pair = rank_of_highest_pair(pair, board);
     return highest_pair > sorted_board.cards[0].value;
 };
 
-var top_pair = module.exports.top_pair = function(pair, board) {
-    var sorted_board = new card_collection(board);
+let top_pair = module.exports.top_pair = function(pair, board) {
+    let sorted_board = new card_collection(board);
 
     if (sorted_board.cards[0].value === sorted_board.cards[1].value) {
         return false;
     }
 
-    var highest_pair = rank_of_highest_pair(pair, board);
+    let highest_pair = rank_of_highest_pair(pair, board);
     return highest_pair === sorted_board.cards[0].value;
 };
 
-var pocket_pair_below_top_pair = module.exports.pocket_pair_below_top_pair = function(pair, board) {
-    var sorted_board = new card_collection(board);
-    var highest_pair = rank_of_highest_pair(pair, board);
+let pocket_pair_below_top_pair = module.exports.pocket_pair_below_top_pair = function(pair, board) {
+    let sorted_board = new card_collection(board);
+    let highest_pair = rank_of_highest_pair(pair, board);
     return highest_pair < sorted_board.cards[0].value && highest_pair > sorted_board.cards[1].value;
 };
 
-var middle_pair = module.exports.middle_pair = function(pair, board) {
-    var sorted_board = new card_collection(board);
-    var highest_pair = rank_of_highest_pair(pair, board);
+let middle_pair = module.exports.middle_pair = function(pair, board) {
+    let sorted_board = new card_collection(board);
+    let highest_pair = rank_of_highest_pair(pair, board);
 
     if (sorted_board.cards[1].value === sorted_board.cards[2].value) {
         return false;
@@ -198,9 +199,9 @@ var middle_pair = module.exports.middle_pair = function(pair, board) {
     return false;
 };
 
-var weak_pair = module.exports.weak_pair = function(pair, board) {
-    var sorted_board = new card_collection(board);
-    var highest_pair = rank_of_highest_pair(pair, board);
+let weak_pair = module.exports.weak_pair = function(pair, board) {
+    let sorted_board = new card_collection(board);
+    let highest_pair = rank_of_highest_pair(pair, board);
     if (highest_pair === 0 || highest_pair >= sorted_board.cards[1].value) {
         return false;
     } else {
@@ -208,22 +209,22 @@ var weak_pair = module.exports.weak_pair = function(pair, board) {
     }
 };
 
-var ace_high = module.exports.ace_high = function(pair, board) {
-    var sorted_pair = new card_collection([pair]);
+let ace_high = module.exports.ace_high = function(pair, board) {
+    let sorted_pair = new card_collection([pair]);
     return sorted_pair.cards[0].value === 14 && rank_of_highest_pair(pair, board) === 0;
 };
 
-var flush_suit = module.exports.flush_suit = function(pair, board) {
-    var hand = new card_collection(board.concat(pair));
+let flush_suit = module.exports.flush_suit = function(pair, board) {
+    let hand = new card_collection(board.concat(pair));
     hand.sort_by_suit();
     return hand.cards[0].suit;
 };
 
-var flush_draw_util = function(pair, board, number_of_matches) {
-    var ms = matching_suits(pair, board);
-    var fs = flush_suit(pair, board);
+let flush_draw_util = function(pair, board, number_of_matches) {
+    let ms = matching_suits(pair, board);
+    let fs = flush_suit(pair, board);
 
-    var flush_suit_in_hole_cards = false;
+    let flush_suit_in_hole_cards = false;
     if (pair.card1.suit === fs ||
         pair.card2.suit === fs) {
         flush_suit_in_hole_cards = true;
@@ -235,14 +236,14 @@ var flush_draw_util = function(pair, board, number_of_matches) {
     return true;
 };
 
-var flush_draw = module.exports.flush_draw = function(pair, board) {
+let flush_draw = module.exports.flush_draw = function(pair, board) {
     return flush_draw_util(pair, board, 4);
 };
 
-var nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) {
-    var sorted_board = new card_collection(board);
-    var first_missing_rank = 14;
-    for (var i = 0; i < sorted_board.cards.length; i++) {
+let nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) {
+    let sorted_board = new card_collection(board);
+    let first_missing_rank = 14;
+    for (let i = 0; i < sorted_board.cards.length; i++) {
         if (sorted_board.cards[i].suit === flushsuit && sorted_board.cards[i].value === first_missing_rank) {
             first_missing_rank--;
         }
@@ -251,12 +252,12 @@ var nut_flush_card = module.exports.nut_flush_card = function(board, flushsuit) 
     return first_missing_rank;
 };
 
-var nut_flush_draw_util = function(pair, board) {
-    var fs = flush_suit(pair, board);
-    var first_missing_rank = nut_flush_card(board, fs);
+let nut_flush_draw_util = function(pair, board) {
+    let fs = flush_suit(pair, board);
+    let first_missing_rank = nut_flush_card(board, fs);
 
-    var is_nut_flush_draw = false;
-    var card_matches_nut = function(card) {
+    let is_nut_flush_draw = false;
+    let card_matches_nut = function(card) {
         if (card.value === first_missing_rank && card.suit === fs) {
             is_nut_flush_draw = true;
         }
@@ -268,35 +269,35 @@ var nut_flush_draw_util = function(pair, board) {
     return is_nut_flush_draw;
 };
 
-var nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
-    var fd = flush_draw(pair, board);
+let nut_flush_draw = module.exports.nut_flush_draw = function(pair, board) {
+    let fd = flush_draw(pair, board);
     if (!fd) return false;
 
     return nut_flush_draw_util(pair, board);
 };
 
-var backdoor_flush_draw = module.exports.backdoor_flush_draw = function(pair, board) {
+let backdoor_flush_draw = module.exports.backdoor_flush_draw = function(pair, board) {
     return flush_draw_util(pair, board, 3);
 };
 
-var backdoor_nut_flush_draw = module.exports.backdoor_nut_flush_draw = function(pair, board) {
-    var fd = backdoor_flush_draw(pair, board);
+let backdoor_nut_flush_draw = module.exports.backdoor_nut_flush_draw = function(pair, board) {
+    let fd = backdoor_flush_draw(pair, board);
     if (!fd) return false;
 
     return nut_flush_draw_util(pair, board);
 };
 
-var overcards = module.exports.overcards = function(pair, board) {
-    var sorted_board = new card_collection(board);
+let overcards = module.exports.overcards = function(pair, board) {
+    let sorted_board = new card_collection(board);
 
     return pair.card1.value !== pair.card2.value &&
         pair.card2.value > sorted_board.cards[0].value;
 };
 
 module.exports.rank_table = function(range, board) {
-    var combos = {};
+    let combos = {};
 
-    var add_combo = function(combo_name) {
+    let add_combo = function(combo_name) {
         if (!combos[combo_name]) {
             combos[combo_name] = 1;
         } else {
