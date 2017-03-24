@@ -1,6 +1,7 @@
 let card_collection = require('../lib/card-collection');
 let card = require('../lib/card');
 let card_pair = require('../lib/card-pair');
+const should = require('should');
 
 describe('card-collection', function() {
     it ('should sort the cards when it\'s created', function() {

@@ -1,6 +1,7 @@
 let rank_hands = require('../lib/rank-hands');
 let card = require('../lib/card');
 let card_pair = require('../lib/card-pair');
+const should = require('should');
 
 describe('rank-hands', function() {
     describe('broadway', function() {

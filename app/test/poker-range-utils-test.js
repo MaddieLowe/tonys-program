@@ -1,4 +1,5 @@
 let poker_range_utils = require('../lib/poker-range-utils');
+const should = require('should');
 
 describe('poker-range-utils', function() {
     describe('find_all_pairs', function() {

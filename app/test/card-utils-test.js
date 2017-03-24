@@ -1,6 +1,7 @@
 let card_utils = require('../lib/card-utils');
 let card = require('../lib/card');
 let card_pair = require('../lib/card-pair');
+const should = require('should');
 
 describe('card-utils', function() {
     describe('card_from_value', function() {
