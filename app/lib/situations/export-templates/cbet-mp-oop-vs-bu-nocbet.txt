@@ -1,0 +1,31 @@
+﻿PokerStars Hand #<HAND_ID>:  Hold'em No Limit ($0.25/$0.50 USD) - 2017/04/18 17:15:46 MT [2017/04/18 19:15:46 ET]
+Table 'CBetOOPDrill' 6-max Seat #1 is the button
+Seat 1: Dealer ($50 in chips) 
+Seat 2: SmallBlind ($50 in chips) 
+Seat 3: BigBlind ($50 in chips) 
+Seat 4: UnderTheGun ($50 in chips)
+Seat 5: Player ($50 in chips) 
+Seat 6: Cutoff ($50 in chips) 
+SmallBlind: posts small blind $0.25
+BigBlind: posts big blind $0.50
+*** HOLE CARDS ***
+Dealt to Player [<HOLE_CARDS>]
+UnderTheGun: folds
+Player: raises $0.75 to $1.25
+Cutoff: folds
+Dealer: calls $1.25
+SmallBlind: folds
+BigBlind: folds
+*** FLOP *** [<FLOP>]
+Player: checks
+Dealer: folds
+Player collected $3.25 from the pot
+*** SUMMARY ***
+Total pot $3.25 | Rake $0
+Board [<FLOP>]
+Seat 1: Dealer (button) folded on the Flop
+Seat 2: SmallBlind (small blind) folded before Flop
+Seat 3: BigBlind (big blind) folded before Flop
+Seat 4: UnderTheGun folded before Flop (didn't bet)
+Seat 5: Player collected ($3.25)
+Seat 6: Cutoff folded before Flop (didn't bet)
