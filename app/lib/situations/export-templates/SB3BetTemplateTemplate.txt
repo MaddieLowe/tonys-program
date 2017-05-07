@@ -1,0 +1,80 @@
+﻿PokerStars Hand #<HAND_ID>:  Hold'em No Limit ($0.25/$0.50 USD) - 2017/04/18 17:15:46 MT [2017/04/18 19:15:46 ET]
+Table 'SB3BetDrill' 6-max Seat #1 is the button
+Seat 1: Dealer ($50 in chips) 
+Seat 2: Player ($50 in chips) 
+Seat 3: BigBlind ($50 in chips) 
+Seat 4: UnderTheGun ($50 in chips)
+Seat 5: Middle ($50 in chips) 
+Seat 6: Cutoff ($50 in chips) 
+Player: posts small blind $0.25
+BigBlind: posts big blind $0.50
+*** HOLE CARDS ***
+Dealt to Player [<HOLE_CARDS>]
+<PREFLOPACTION>
+*** FLOP *** [<FLOP>]
+Player: <FLOPACTION>
+<OPPONENT>: folds
+<UNCALLEDBET>
+Player collected $
+<SUMMARY>
+
+<OPPONENT> = {UnderTheGun, Middle, Cutoff, Dealer}
+<FLOPACTION> = {check, bet 1/4, bet 1/2, bet pot}
+
+<UNCALLEDBET> =
+Uncalled bet ($<BET>) returned to Player (only if there was a bet)
+<WINNINGS> = 
+Player collected <POT> from pot
+
+<SUMMARY> =
+
+*** SUMMARY ***
+Total pot <POT> | Rake $0
+Board [<FLOP>]
+Seat 1: Dealer 
+Seat 2: Player (small blind) collected (<POT>)
+Seat 3: BigBlind (big blind) folded before Flop
+Seat 4: UnderTheGun
+Seat 5: Middle
+Seat 6: Cutoff
+
+
+<PREFLOPACTION> =
+
+UnderTheGun: raises $0.75 to $1.25
+Middle: folds
+Cutoff: folds
+Dealer: folds
+Player: raises $2.75 to $4.00
+BigBlind: folds
+UnderTheGun: calls $2.75
+
+or
+
+UnderTheGun: folds
+Middle: raises $0.75 to $1.25
+Cutoff: folds
+Dealer: folds
+Player: raises $2.75 to $4.00
+BigBlind: folds
+Middle: calls $2.75
+
+or
+
+UnderTheGun: folds
+Middle: folds
+Cutoff: raises $0.75 to $1.25
+Dealer: folds
+Player: raises $2.75 to $4.00
+BigBlind: folds
+Cutoff: calls $2.75
+
+or
+
+UnderTheGun: folds
+Middle: folds
+Cutoff: folds
+Dealer: raises $0.75 to $1.25
+Player: raises $2.75 to $4.00
+BigBlind: folds
+Dealer: calls $2.75
