@@ -10,13 +10,27 @@ Player: posts small blind $0.25
 BigBlind: posts big blind $0.50
 *** HOLE CARDS ***
 Dealt to Player [<HOLE_CARDS>]
-<PREFLOPACTION>
+UnderTheGun: raises $0.75 to $1.25
+Middle: folds
+Cutoff: folds
+Dealer: folds
+Player: raises $2.75 to $4.00
+BigBlind: folds
+UnderTheGun: calls $2.75
 *** FLOP *** [<FLOP>]
-Player: <FLOPACTION>
-<OPPONENT>: folds
-<UNCALLEDBET>
-Player collected $
-<SUMMARY>
+Player: checks
+UnderTheGun: folds
+Player collected $8.50 from the pot
+*** SUMMARY ***
+Total pot $8.50 | Rake $0
+Board [<FLOP>]
+Seat 1: Dealer (button) folded before Flop (didn't bet)
+Seat 2: Player (small blind) collected ($8.50)
+Seat 3: BigBlind (big blind) folded before Flop
+Seat 4: UnderTheGun folded on the Flop
+Seat 5: Middle folded before Flop (didn't bet)
+Seat 6: Cutoff folded before Flop (didn't bet)
+
 
 <OPPONENT> = {UnderTheGun, Middle, Cutoff, Dealer}
 <FLOPACTION> = {check, bet 1/4, bet 1/2, bet pot}

@@ -1,0 +1,32 @@
+﻿PokerStars Hand #<HAND_ID>:  Hold'em No Limit ($0.25/$0.50 USD) - 2017/04/18 17:15:46 MT [2017/04/18 19:15:46 ET]
+Table 'SB3BetDrill' 6-max Seat #1 is the button
+Seat 1: Dealer ($50 in chips) 
+Seat 2: Player ($50 in chips) 
+Seat 3: BigBlind ($50 in chips) 
+Seat 4: UnderTheGun ($50 in chips)
+Seat 5: Middle ($50 in chips) 
+Seat 6: Cutoff ($50 in chips) 
+Player: posts small blind $0.25
+BigBlind: posts big blind $0.50
+*** HOLE CARDS ***
+Dealt to Player [<HOLE_CARDS>]
+UnderTheGun: folds
+Middle: folds
+Cutoff: raises $0.75 to $1.25
+Dealer: folds
+Player: raises $2.75 to $4.00
+BigBlind: folds
+Cutoff: calls $2.75
+*** FLOP *** [<FLOP>]
+Player: checks
+Cutoff: folds
+Player collected $8.50 from the pot
+*** SUMMARY ***
+Total pot 8.50 | Rake $0
+Board [<FLOP>]
+Seat 1: Dealer (button) folded before Flop (didn't bet) 
+Seat 2: Player (small blind) collected (8.50)
+Seat 3: BigBlind (big blind) folded before Flop
+Seat 4: UnderTheGun folded before Flop (didn't bet)
+Seat 5: Middle folded before Flop (didn't bet)
+Seat 6: Cutoff folded on the Flop
