@@ -10,7 +10,9 @@ $(document).ready(function() {
     let situations_emitter = new drop_down_menu(situation_el, Object.keys(situations));
     let current_situation_type = situations[Object.keys(situations)[0]];
     situations_emitter.on('change', function(selected) {
-        current_situation_type = selected;
+        current_situation_type = situations[selected];
+        get_new_situation();
+        setup_positions_dropdown();
     });
 
     let completed_hands = [];
@@ -23,7 +25,7 @@ $(document).ready(function() {
     let position_random = true;
     let position;
 
-    let get_new_situation = function() {
+    var get_new_situation = function() {
         current_situation = new situation(current_situation_type);
         if (!position_random) {
             current_situation.set_position(position);
@@ -44,7 +46,7 @@ $(document).ready(function() {
         });
     };
 
-    let setup_positions_dropdown = function() {
+    var setup_positions_dropdown = function() {
         let positions = ['Random'].concat(current_situation.positions);
         let positions_el = $('drop-down-menu.position');
         positions_el.children().remove();
