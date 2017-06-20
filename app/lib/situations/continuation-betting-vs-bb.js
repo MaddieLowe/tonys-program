@@ -1,5 +1,4 @@
 let fs = require('fs');
-
 module.exports = {
     type: "Continuation Betting vs Big Blind",
     pot: 2.75,

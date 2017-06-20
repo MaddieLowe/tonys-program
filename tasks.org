@@ -54,6 +54,14 @@
 *** DONE Allow card pairs, not individual cards
 *** DONE Put unique card into text file as TURN
 *** DONE Create more situations
+** TODO Features
+*** 'Hold' Buttons
+**** Button to hold/maintain a hand over different boards
+**** Button to hold/maintain a board over different hands
+*** Board selection abilities
+**** Suitedness
+**** Choose card rank
+**** Choose card rank within range
 * Notes:
 
 Instructions for adding to a situation:
