@@ -97,5 +97,7 @@ module.exports = function(element, model) {
         emitter.emit('changed');
     });
 
+    update_displayed_cards();
+
     return emitter;
 };

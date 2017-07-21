@@ -9,6 +9,7 @@ $(document).ready(function() {
     let situation_el = $('drop-down-menu.situation');
     let situations_emitter = new drop_down_menu(situation_el, Object.keys(situations));
     let current_situation_type = situations[Object.keys(situations)[0]];
+    let board_locked = false;
     situations_emitter.on('change', function(selected) {
         current_situation_type = situations[selected];
         get_new_situation();
@@ -26,7 +27,15 @@ $(document).ready(function() {
     let position;
 
     var get_new_situation = function() {
+        // Save previous board in case board is locked
+        let prev_board;
+        if (current_situation) prev_board = current_situation.board;
         current_situation = new situation(current_situation_type);
+
+        if (board_locked && prev_board) {
+            current_situation.board = prev_board;
+        }
+
         if (!position_random) {
             current_situation.set_position(position);
         }
@@ -104,5 +113,16 @@ $(document).ready(function() {
     let new_session_el = $('.new-session');
     new_session_el.on('click', function() {
         popup_el.show();
+    });
+
+    let lock_board_el = $('.lock-board');
+    // TODO: cleanup click handler
+    lock_board_el.on('click', () => {
+        board_locked = !board_locked;
+        if (board_locked) {
+            lock_board_el.addClass('selected');
+        } else {
+            lock_board_el.removeClass('selected');
+        }
     });
 });

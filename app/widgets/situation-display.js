@@ -1,6 +1,7 @@
 let EventEmitter = require('events');
 let fs = require('fs');
 let card_icon = require('./card-icon');
+let card_selector = require('./card-selector');
 
 module.exports = function(element, model) {
     let emitter = new EventEmitter();
@@ -24,8 +25,10 @@ module.exports = function(element, model) {
             el.append(new_card);
         });
     };
-    let board_el = element.find('.board');
-    add_cards(board_el, model.board);
+
+    let board_el = element.find('card-selector');
+    // This returns an emitter, but we don't need it right now
+    card_selector(board_el, model.board);
 
     let hand_el = element.find('.hand');
     add_cards(hand_el, model.hand);
