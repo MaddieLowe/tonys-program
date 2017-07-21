@@ -29,12 +29,10 @@ $(document).ready(function() {
     var get_new_situation = function() {
         // Save previous board in case board is locked
         let prev_board;
-        if (current_situation) prev_board = current_situation.board;
-        current_situation = new situation(current_situation_type);
-
-        if (board_locked && prev_board) {
-            current_situation.board = prev_board;
+        if (current_situation && board_locked) {
+            prev_board = current_situation.board;
         }
+        current_situation = new situation(current_situation_type, prev_board);
 
         if (!position_random) {
             current_situation.set_position(position);

@@ -2,7 +2,7 @@ let get_random_card = require('./card-utils').get_random_card;
 let get_random_card_pair = require('./card-utils').get_random_card_pair;
 let get_random_position = require('./card-utils').get_random_position;
 
-function situation(config) {
+function situation(config, board) {
     let board_size = config.board_size || 3;
     this.type = config.type;
     this.positions = Object.keys(config.export_templates);
@@ -10,6 +10,7 @@ function situation(config) {
     this.pot = config.pot;
     this.amount = Number(0).toFixed(2);
     this.export_templates = config.export_templates;
+    this.board = board || [];
 
     if (config.hand_range) {
         this.hand_ranges_by_position = {};
@@ -18,9 +19,10 @@ function situation(config) {
         }
     }
 
-    this.board = [];
-    for (let i = 0; i < board_size; i++) {
-        this.board[i] = get_random_card(this.board);
+    if (this.board.length === 0) {
+        for (let i = 0; i < board_size; i++) {
+            this.board[i] = get_random_card(this.board);
+        }
     }
 
     this.update_hand();
